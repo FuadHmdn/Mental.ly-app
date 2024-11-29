@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Mental.ly-app</string>
+    <string name="email_hin">Enter Email</string>
+    <string name="password_hint">Enter Password</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="login_button">Login</string>
+    <string name="or">ATAU</string>
+    <string name="register">Don\'t Have an Account? </string>
+    <string name="register_button">Register Now!</string>
+    <string name="welcome_head">Selamat Datang</string>
+    <string name="register_guide">Silahkan Daftar untuk membuat akun!</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="confirm_password">Confirm Password</string>
 </resources>
