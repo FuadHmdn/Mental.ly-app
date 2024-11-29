@@ -12,5 +12,7 @@
     <string name="diagnose_from_symptomps_desc">Identify your mental health through symptoms.</string>
     <string name="share_your_feelings_desc">Express emotions and understand yourself better.</string>
     <string name="read_articles">Read Articles</string>
+    <string name="error_password">Password must be at least 8 characters long</string>
     <string name="see_all">see all</string>
+    <string name="enter_your_email">Enter your email</string>
 </resources>

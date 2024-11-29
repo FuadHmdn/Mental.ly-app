@@ -83,7 +83,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:fontFamily="@font/poppins_regular"
                 android:text="@string/self_diagnose"
                 android:textColor="@color/md_theme_secondary"
                 android:textSize="14sp"
@@ -96,7 +95,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
                 android:backgroundTint="@color/md_theme_onPrimaryContainer"
                 app:cardCornerRadius="10dp"
@@ -231,9 +230,9 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:fontFamily="@font/poppins_regular"
                     android:text="@string/read_articles"
                     android:textColor="@color/md_theme_secondary"
+                    android:textStyle="bold"
                     android:textSize="14sp" />
 
                 <androidx.cardview.widget.CardView
