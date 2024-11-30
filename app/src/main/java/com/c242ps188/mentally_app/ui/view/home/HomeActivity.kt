@@ -8,11 +8,12 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.C242PS188.mentally_app.R
 import com.C242PS188.mentally_app.databinding.ActivityHomeBinding
-import com.c242ps188.mentally_app.ui.view.login.Login
+import com.c242ps188.mentally_app.ui.view.login.LoginActivity
+import com.c242ps188.mentally_app.ui.view.login.RegisterActivity
 
 class HomeActivity : AppCompatActivity() {
 
-    lateinit var bindig: ActivityHomeBinding
+    private lateinit var bindig: ActivityHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,7 +31,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setListener() {
         bindig.settings.setOnClickListener {
-            val intent = Intent(this, Login::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
     }
