@@ -37,5 +37,21 @@
     <string name="email_required">Email required</string>
     <string name="password_required">Password required</string>
     <string name="invalid_email">invalid email</string>
+    <string name="back_to_home">back to home</string>
+    <string name="symptoms_diagnose">Symptoms Diagnose</string>
+    <string name="next">Next</string>
+    <string name="your_gender">Your gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="your_age">Your Age</string>
+    <string name="years">years</string>
+    <string name="lets_start">Lets Start...</string>
+    <string name="how_would_you_rate_your_study_or_work_pressure">How would you rate your study or work pressure?</string>
+    <string name="very_low">Very Low</string>
+    <string name="low">Low</string>
+    <string name="moderate">Moderate</string>
+    <string name="high">High</string>
+    <string name="very_high">Very High</string>
+
 
 </resources>

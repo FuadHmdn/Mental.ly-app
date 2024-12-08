@@ -98,7 +98,7 @@
     <color name="md_theme_onPrimary_highContrast">#FFFFFF</color>
     <color name="md_theme_primaryContainer_highContrast">#8B0013</color>
     <color name="md_theme_onPrimaryContainer_highContrast">#FFFFFF</color>
-    <color name="md_theme_secondary_highContrast">#212323</color>
+    <color name="md_theme_secondary_highContrast">#5F5E5E</color>
     <color name="md_theme_onSecondary_highContrast">#FFFFFF</color>
     <color name="md_theme_secondaryContainer_highContrast">#E9E9E9</color>
     <color name="md_theme_onSecondaryContainer_highContrast">#FFFFFF</color>
