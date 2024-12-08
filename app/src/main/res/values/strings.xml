@@ -52,6 +52,21 @@
     <string name="moderate">Moderate</string>
     <string name="high">High</string>
     <string name="very_high">Very High</string>
+    <string name="back">Back</string>
+    <string name="how_severe_is_your_study_or_work_satisfied_at_the_moment">How severe is your study or work satisfied at the moment?</string>
+    <string name="how_high_is_your_stress_level">How high is your stress level?</string>
+    <string name="how_would_you_categorize_your_dietary_habits">How would you categorize your dietary habits?</string>
+    <string name="unhealthy">UnHealthy</string>
+    <string name="healthy">Healthy</string>
+    <string name="_5_hours"><![CDATA[< 5 Hours]]></string>
+    <string name="_8_hourse"><![CDATA[> 8 Hourse]]></string>
+    <string name="_7_8_hourse">7-8 Hourse</string>
+    <string name="_5_6_hourse">5-6 Hourse</string>
+    <string name="what_is_your_typical_sleep_duration_in_a_day">What is your typical sleep duration in a day?</string>
+    <string name="what_is_your_typical_work_duration_in_a_day">What is your typical work duration in a day?</string>
+    <string name="have_you_ever_experienced_thoughts_of_self_harm_or_suicide">Have you ever experienced thoughts of self-harm or suicide?</string>
+    <string name="is_there_a_history_of_mental_illness_in_your_family">Is there a history of mental illness in your family?</string>
+    <string name="have_you_ever_been_diagnosed_with_experienced_symptoms_of_depression">Have you ever been diagnosed with experienced symptoms of depression?</string>
 
 
 </resources>
