@@ -73,6 +73,7 @@
     <string name="finish">Finish</string>
     <string name="back_depression_inventory_bdi_skor">Back Depression Inventory (BDI) SKOR</string>
     <string name="detected_for_mental_health_issues">Detected for Mental Health Issues</string>
+    <string name="please_fill_in_all_the_data">Please fill in all the data</string>
 
 
 </resources>

@@ -1,6 +1,9 @@
 package com.c242ps188.mentally_app.ui.view.diagnose
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -202,6 +205,23 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
                 binding.skor.visibility = View.GONE
                 binding.diagnose10.visibility = View.VISIBLE
             }
+
+            12 -> {
+                binding.diagnose3.visibility = View.GONE
+                binding.diagnose2.visibility = View.GONE
+                binding.diagnose4.visibility = View.GONE
+                binding.diagnose5.visibility = View.GONE
+                binding.diagnose6.visibility = View.GONE
+                binding.diagnose1.visibility = View.GONE
+                binding.btnBackDiagnose.visibility = View.GONE
+                binding.btnNext.visibility = View.GONE
+                binding.diagnose7.visibility = View.GONE
+                binding.diagnose8.visibility = View.GONE
+                binding.btnFinish.visibility = View.VISIBLE
+                binding.diagnose9.visibility = View.GONE
+                binding.diagnose10.visibility = View.GONE
+                binding.skor.visibility = View.VISIBLE
+            }
         }
     }
 
@@ -226,7 +246,6 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
                 parent?.let {
                     val inputAge = it.getItemAtPosition(position).toString()
                     diagnoseViewModel.age = inputAge.toFloatOrNull()
-                    showToast(diagnoseViewModel.age.toString())
                 }
             }
 
@@ -238,12 +257,10 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
             when (checkedId) {
                 R.id.radio_male -> {
                     diagnoseViewModel.gender = 1
-                    showToast(diagnoseViewModel.gender.toString())
                 }
 
                 R.id.radio_female -> {
                     diagnoseViewModel.gender = 0
-                    showToast(diagnoseViewModel.gender.toString())
                 }
             }
         }
@@ -253,27 +270,22 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
             when (checkedId) {
                 R.id.rb_very_low -> {
                     diagnoseViewModel.workPressure = 1F
-                    showToast(diagnoseViewModel.workPressure.toString())
                 }
 
                 R.id.rb_low -> {
                     diagnoseViewModel.workPressure = 2F
-                    showToast(diagnoseViewModel.workPressure.toString())
                 }
 
                 R.id.rb_moderate -> {
                     diagnoseViewModel.workPressure = 3F
-                    showToast(diagnoseViewModel.workPressure.toString())
                 }
 
                 R.id.rb_high -> {
                     diagnoseViewModel.workPressure = 4F
-                    showToast(diagnoseViewModel.workPressure.toString())
                 }
 
                 R.id.rb_very_high -> {
                     diagnoseViewModel.workPressure = 5F
-                    showToast(diagnoseViewModel.workPressure.toString())
                 }
             }
         }
@@ -283,27 +295,22 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
             when (checkedId) {
                 R.id.rb_very_low2 -> {
                     diagnoseViewModel.workSatisfied = 1F
-                    showToast(diagnoseViewModel.workSatisfied.toString())
                 }
 
                 R.id.rb_low2 -> {
                     diagnoseViewModel.workSatisfied = 2F
-                    showToast(diagnoseViewModel.workSatisfied.toString())
                 }
 
                 R.id.rb_moderate2 -> {
                     diagnoseViewModel.workSatisfied = 3F
-                    showToast(diagnoseViewModel.workSatisfied.toString())
                 }
 
                 R.id.rb_high2 -> {
                     diagnoseViewModel.workSatisfied = 4F
-                    showToast(diagnoseViewModel.workSatisfied.toString())
                 }
 
                 R.id.rb_very_high2 -> {
                     diagnoseViewModel.workSatisfied = 5F
-                    showToast(diagnoseViewModel.workSatisfied.toString())
                 }
             }
         }
@@ -313,27 +320,22 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
             when (checkedId) {
                 R.id.rb_very_low3 -> {
                     diagnoseViewModel.stressLevel = 1F
-                    showToast(diagnoseViewModel.stressLevel.toString())
                 }
 
                 R.id.rb_low3 -> {
                     diagnoseViewModel.stressLevel = 2F
-                    showToast(diagnoseViewModel.stressLevel.toString())
                 }
 
                 R.id.rb_moderate3 -> {
                     diagnoseViewModel.stressLevel = 3F
-                    showToast(diagnoseViewModel.stressLevel.toString())
                 }
 
                 R.id.rb_high3 -> {
                     diagnoseViewModel.stressLevel = 4F
-                    showToast(diagnoseViewModel.stressLevel.toString())
                 }
 
                 R.id.rb_very_high3 -> {
                     diagnoseViewModel.stressLevel = 5F
-                    showToast(diagnoseViewModel.stressLevel.toString())
                 }
             }
         }
@@ -343,17 +345,14 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
             when (checkedId) {
                 R.id.rb_healthy -> {
                     diagnoseViewModel.dietaryHabits = 0F
-                    showToast(diagnoseViewModel.dietaryHabits.toString())
                 }
 
                 R.id.rb_moderate4 -> {
                     diagnoseViewModel.dietaryHabits = 1F
-                    showToast(diagnoseViewModel.dietaryHabits.toString())
                 }
 
                 R.id.rb_unHealthy -> {
                     diagnoseViewModel.dietaryHabits = 2F
-                    showToast(diagnoseViewModel.dietaryHabits.toString())
                 }
             }
         }
@@ -363,22 +362,18 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
             when (checkedId) {
                 R.id.rb_5hours -> {
                     diagnoseViewModel.sleepHours = 0F
-                    showToast(diagnoseViewModel.sleepHours.toString())
                 }
 
                 R.id.rb_5_6_hourse -> {
                     diagnoseViewModel.sleepHours = 1F
-                    showToast(diagnoseViewModel.sleepHours.toString())
                 }
 
                 R.id.rb_7_8_hourse -> {
                     diagnoseViewModel.sleepHours = 2F
-                    showToast(diagnoseViewModel.sleepHours.toString())
                 }
 
                 R.id.rb_8hourse -> {
                     diagnoseViewModel.sleepHours = 3F
-                    showToast(diagnoseViewModel.sleepHours.toString())
                 }
             }
         }
@@ -387,7 +382,6 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
         binding.edWorkHours.addTextChangedListener { editable ->
             val workHours = editable?.toString() ?: ""
             diagnoseViewModel.workHours = workHours.toFloatOrNull() ?: 0f
-            showToast(workHours)
         }
 
         // SELF HARM
@@ -395,12 +389,10 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
             when (checkedId) {
                 R.id.rb_yes7 -> {
                     diagnoseViewModel.selfHarm = 1F
-                    showToast(diagnoseViewModel.selfHarm.toString())
                 }
 
                 R.id.rb_no7 -> {
                     diagnoseViewModel.selfHarm = 0F
-                    showToast(diagnoseViewModel.selfHarm.toString())
                 }
             }
         }
@@ -410,12 +402,10 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
             when (checkedId) {
                 R.id.rb_yes8 -> {
                     diagnoseViewModel.historyMental = 1F
-                    showToast(diagnoseViewModel.historyMental.toString())
                 }
 
                 R.id.rb_no8 -> {
                     diagnoseViewModel.historyMental = 0F
-                    showToast(diagnoseViewModel.historyMental.toString())
                 }
             }
         }
@@ -425,12 +415,10 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
             when (checkedId) {
                 R.id.rb_yes9 -> {
                     diagnoseViewModel.depression = 1F
-                    showToast(diagnoseViewModel.depression.toString())
                 }
 
                 R.id.rb_no9 -> {
                     diagnoseViewModel.depression = 0F
-                    showToast(diagnoseViewModel.depression.toString())
                 }
             }
         }
@@ -452,29 +440,33 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
             }
 
             if (diagnoseViewModel.diagnoseProgress == 11 && valid) {
-                showToast("Berhasil")
-                binding.diagnose3.visibility = View.GONE
-                binding.diagnose2.visibility = View.GONE
-                binding.diagnose4.visibility = View.GONE
-                binding.diagnose5.visibility = View.GONE
-                binding.diagnose6.visibility = View.GONE
-                binding.diagnose1.visibility = View.GONE
-                binding.btnBackDiagnose.visibility = View.GONE
-                binding.btnNext.visibility = View.GONE
-                binding.diagnose7.visibility = View.GONE
-                binding.diagnose8.visibility = View.GONE
-                binding.btnFinish.visibility = View.VISIBLE
-                binding.diagnose9.visibility = View.GONE
-                binding.diagnose10.visibility = View.GONE
-                binding.skor.visibility = View.VISIBLE
 
+                diagnoseViewModel.diagnoseProgress++
+                updateUI()
                 binding.circularProgressBar.setProgressWithAnimation(70f, 1000)
 
             } else if (diagnoseViewModel.diagnoseProgress == 11 && !valid) {
                 diagnoseViewModel.diagnoseProgress--
-                showToast("Pleas Input All Data")
+                showToast(getString(R.string.please_fill_in_all_the_data))
             }
         }
+
+        // VALIDATE INPUT WORK HOURS
+        binding.edWorkHours.addTextChangedListener (object : TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+
+            override fun afterTextChanged(s: Editable?) {
+                val input = s?.toString()?.toIntOrNull()
+                if ( input !in 1..12) {
+                    s?.clear()
+                    diagnoseViewModel.workHours = null
+                    binding.edWorkHours.error = "Input should be 1 hour to 12 hours"
+                    Log.d("HOURS", s.toString())
+                }
+            }
+
+        })
 
         binding.btnBackDiagnose.setOnClickListener {
             diagnoseViewModel.diagnoseProgress--

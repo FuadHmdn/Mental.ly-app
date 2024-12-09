@@ -6,6 +6,7 @@ import com.c242ps188.mentally_app.data.repository.DiagnoseRepository
 class DiagnoseViewModel(private val diagnoseRepository: DiagnoseRepository): ViewModel() {
 
     var diagnoseProgress = 1
+    var showResult = false
     var gender: Int? = null
     var age: Float? = null
     var workPressure: Float? = null
