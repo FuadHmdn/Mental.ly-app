@@ -67,6 +67,12 @@
     <string name="have_you_ever_experienced_thoughts_of_self_harm_or_suicide">Have you ever experienced thoughts of self-harm or suicide?</string>
     <string name="is_there_a_history_of_mental_illness_in_your_family">Is there a history of mental illness in your family?</string>
     <string name="have_you_ever_been_diagnosed_with_experienced_symptoms_of_depression">Have you ever been diagnosed with experienced symptoms of depression?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="hours">Hours</string>
+    <string name="finish">Finish</string>
+    <string name="back_depression_inventory_bdi_skor">Back Depression Inventory (BDI) SKOR</string>
+    <string name="detected_for_mental_health_issues">Detected for Mental Health Issues</string>
 
 
 </resources>

@@ -50,4 +50,6 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 
     implementation("com.github.bumptech.glide:glide:4.15.1")
+    implementation("com.mikhaellopez:circularprogressbar:3.1.0")
+
 }

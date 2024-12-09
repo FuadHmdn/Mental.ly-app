@@ -1,7 +1,6 @@
 package com.c242ps188.mentally_app.ui.view.diagnose
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -47,6 +46,8 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
                 binding.diagnose1.visibility = View.VISIBLE
                 binding.diagnose2.visibility = View.GONE
                 binding.diagnose3.visibility = View.GONE
+                binding.skor.visibility = View.GONE
+                binding.btnFinish.visibility = View.GONE
                 binding.diagnose4.visibility = View.GONE
                 binding.diagnose5.visibility = View.GONE
                 binding.btnNext.visibility = View.VISIBLE
@@ -57,19 +58,23 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
                 binding.diagnose10.visibility = View.GONE
                 binding.diagnose9.visibility = View.GONE
             }
+
             2 -> {
                 binding.diagnose3.visibility = View.GONE
                 binding.diagnose4.visibility = View.GONE
                 binding.diagnose5.visibility = View.GONE
                 binding.diagnose2.visibility = View.VISIBLE
+                binding.skor.visibility = View.GONE
                 binding.diagnose1.visibility = View.GONE
                 binding.btnBackDiagnose.visibility = View.VISIBLE
                 binding.diagnose6.visibility = View.GONE
                 binding.diagnose10.visibility = View.GONE
+                binding.btnFinish.visibility = View.GONE
                 binding.diagnose7.visibility = View.GONE
                 binding.diagnose8.visibility = View.GONE
                 binding.diagnose9.visibility = View.GONE
             }
+
             3 -> {
                 binding.diagnose3.visibility = View.VISIBLE
                 binding.diagnose2.visibility = View.GONE
@@ -77,17 +82,22 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
                 binding.diagnose5.visibility = View.GONE
                 binding.diagnose1.visibility = View.GONE
                 binding.btnBackDiagnose.visibility = View.VISIBLE
+                binding.skor.visibility = View.GONE
                 binding.diagnose6.visibility = View.GONE
                 binding.diagnose7.visibility = View.GONE
+                binding.btnFinish.visibility = View.GONE
                 binding.diagnose10.visibility = View.GONE
                 binding.diagnose8.visibility = View.GONE
                 binding.diagnose9.visibility = View.GONE
             }
+
             4 -> {
                 binding.diagnose3.visibility = View.GONE
                 binding.diagnose2.visibility = View.GONE
                 binding.diagnose4.visibility = View.VISIBLE
+                binding.skor.visibility = View.GONE
                 binding.diagnose6.visibility = View.GONE
+                binding.btnFinish.visibility = View.GONE
                 binding.diagnose5.visibility = View.GONE
                 binding.diagnose1.visibility = View.GONE
                 binding.btnBackDiagnose.visibility = View.VISIBLE
@@ -96,11 +106,14 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
                 binding.diagnose10.visibility = View.GONE
                 binding.diagnose9.visibility = View.GONE
             }
+
             5 -> {
                 binding.diagnose3.visibility = View.GONE
                 binding.diagnose2.visibility = View.GONE
                 binding.diagnose4.visibility = View.GONE
+                binding.skor.visibility = View.GONE
                 binding.diagnose5.visibility = View.VISIBLE
+                binding.btnFinish.visibility = View.GONE
                 binding.diagnose6.visibility = View.GONE
                 binding.diagnose1.visibility = View.GONE
                 binding.btnBackDiagnose.visibility = View.VISIBLE
@@ -109,45 +122,55 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
                 binding.diagnose10.visibility = View.GONE
                 binding.diagnose9.visibility = View.GONE
             }
+
             6 -> {
                 binding.diagnose3.visibility = View.GONE
                 binding.diagnose2.visibility = View.GONE
                 binding.diagnose4.visibility = View.GONE
                 binding.diagnose5.visibility = View.GONE
+                binding.skor.visibility = View.GONE
                 binding.diagnose6.visibility = View.VISIBLE
                 binding.diagnose1.visibility = View.GONE
                 binding.btnBackDiagnose.visibility = View.VISIBLE
+                binding.btnFinish.visibility = View.GONE
                 binding.diagnose7.visibility = View.GONE
                 binding.diagnose8.visibility = View.GONE
                 binding.diagnose10.visibility = View.GONE
                 binding.diagnose9.visibility = View.GONE
             }
+
             7 -> {
                 binding.diagnose3.visibility = View.GONE
                 binding.diagnose2.visibility = View.GONE
                 binding.diagnose4.visibility = View.GONE
                 binding.diagnose5.visibility = View.GONE
+                binding.skor.visibility = View.GONE
                 binding.diagnose6.visibility = View.GONE
                 binding.diagnose1.visibility = View.GONE
                 binding.diagnose9.visibility = View.GONE
                 binding.btnBackDiagnose.visibility = View.VISIBLE
+                binding.btnFinish.visibility = View.GONE
                 binding.diagnose7.visibility = View.VISIBLE
                 binding.diagnose8.visibility = View.GONE
                 binding.diagnose10.visibility = View.GONE
             }
+
             8 -> {
                 binding.diagnose3.visibility = View.GONE
                 binding.diagnose2.visibility = View.GONE
                 binding.diagnose4.visibility = View.GONE
                 binding.diagnose5.visibility = View.GONE
+                binding.btnFinish.visibility = View.GONE
                 binding.diagnose6.visibility = View.GONE
                 binding.diagnose1.visibility = View.GONE
+                binding.skor.visibility = View.GONE
                 binding.btnBackDiagnose.visibility = View.VISIBLE
                 binding.diagnose7.visibility = View.GONE
                 binding.diagnose8.visibility = View.VISIBLE
                 binding.diagnose9.visibility = View.GONE
                 binding.diagnose10.visibility = View.GONE
             }
+
             9 -> {
                 binding.diagnose3.visibility = View.GONE
                 binding.diagnose2.visibility = View.GONE
@@ -155,15 +178,19 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
                 binding.diagnose5.visibility = View.GONE
                 binding.diagnose6.visibility = View.GONE
                 binding.diagnose1.visibility = View.GONE
+                binding.btnFinish.visibility = View.GONE
                 binding.btnBackDiagnose.visibility = View.VISIBLE
                 binding.diagnose7.visibility = View.GONE
                 binding.diagnose8.visibility = View.GONE
+                binding.skor.visibility = View.GONE
                 binding.diagnose9.visibility = View.VISIBLE
                 binding.diagnose10.visibility = View.GONE
             }
+
             10 -> {
                 binding.diagnose3.visibility = View.GONE
                 binding.diagnose2.visibility = View.GONE
+                binding.btnFinish.visibility = View.GONE
                 binding.diagnose4.visibility = View.GONE
                 binding.diagnose5.visibility = View.GONE
                 binding.diagnose6.visibility = View.GONE
@@ -172,6 +199,7 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
                 binding.diagnose7.visibility = View.GONE
                 binding.diagnose8.visibility = View.GONE
                 binding.diagnose9.visibility = View.GONE
+                binding.skor.visibility = View.GONE
                 binding.diagnose10.visibility = View.VISIBLE
             }
         }
@@ -337,14 +365,17 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
                     diagnoseViewModel.sleepHours = 0F
                     showToast(diagnoseViewModel.sleepHours.toString())
                 }
-                R.id.rb_5_6_hourse-> {
+
+                R.id.rb_5_6_hourse -> {
                     diagnoseViewModel.sleepHours = 1F
                     showToast(diagnoseViewModel.sleepHours.toString())
                 }
+
                 R.id.rb_7_8_hourse -> {
                     diagnoseViewModel.sleepHours = 2F
                     showToast(diagnoseViewModel.sleepHours.toString())
                 }
+
                 R.id.rb_8hourse -> {
                     diagnoseViewModel.sleepHours = 3F
                     showToast(diagnoseViewModel.sleepHours.toString())
@@ -366,6 +397,7 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
                     diagnoseViewModel.selfHarm = 1F
                     showToast(diagnoseViewModel.selfHarm.toString())
                 }
+
                 R.id.rb_no7 -> {
                     diagnoseViewModel.selfHarm = 0F
                     showToast(diagnoseViewModel.selfHarm.toString())
@@ -380,6 +412,7 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
                     diagnoseViewModel.historyMental = 1F
                     showToast(diagnoseViewModel.historyMental.toString())
                 }
+
                 R.id.rb_no8 -> {
                     diagnoseViewModel.historyMental = 0F
                     showToast(diagnoseViewModel.historyMental.toString())
@@ -394,6 +427,7 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
                     diagnoseViewModel.depression = 1F
                     showToast(diagnoseViewModel.depression.toString())
                 }
+
                 R.id.rb_no9 -> {
                     diagnoseViewModel.depression = 0F
                     showToast(diagnoseViewModel.depression.toString())
@@ -402,8 +436,44 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
         }
 
         binding.btnNext.setOnClickListener {
-            diagnoseViewModel.diagnoseProgress++
-            updateUI()
+            if (diagnoseViewModel.diagnoseProgress != 11) {
+                diagnoseViewModel.diagnoseProgress++
+                updateUI()
+            }
+
+            var valid = true
+
+            if ( diagnoseViewModel.age == null || diagnoseViewModel.gender == null || diagnoseViewModel.selfHarm == null
+                || diagnoseViewModel.depression == null || diagnoseViewModel.dietaryHabits == null || diagnoseViewModel.sleepHours == null
+                || diagnoseViewModel.workSatisfied == null || diagnoseViewModel.workPressure == null || diagnoseViewModel.historyMental == null
+                || diagnoseViewModel.stressLevel == null || diagnoseViewModel.workHours == null
+            ) {
+                valid = false
+            }
+
+            if (diagnoseViewModel.diagnoseProgress == 11 && valid) {
+                showToast("Berhasil")
+                binding.diagnose3.visibility = View.GONE
+                binding.diagnose2.visibility = View.GONE
+                binding.diagnose4.visibility = View.GONE
+                binding.diagnose5.visibility = View.GONE
+                binding.diagnose6.visibility = View.GONE
+                binding.diagnose1.visibility = View.GONE
+                binding.btnBackDiagnose.visibility = View.GONE
+                binding.btnNext.visibility = View.GONE
+                binding.diagnose7.visibility = View.GONE
+                binding.diagnose8.visibility = View.GONE
+                binding.btnFinish.visibility = View.VISIBLE
+                binding.diagnose9.visibility = View.GONE
+                binding.diagnose10.visibility = View.GONE
+                binding.skor.visibility = View.VISIBLE
+
+                binding.circularProgressBar.setProgressWithAnimation(70f, 1000)
+
+            } else if (diagnoseViewModel.diagnoseProgress == 11 && !valid) {
+                diagnoseViewModel.diagnoseProgress--
+                showToast("Pleas Input All Data")
+            }
         }
 
         binding.btnBackDiagnose.setOnClickListener {
