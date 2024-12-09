@@ -52,4 +52,10 @@ dependencies {
     implementation("com.github.bumptech.glide:glide:4.15.1")
     implementation("com.mikhaellopez:circularprogressbar:3.1.0")
 
+    //DATA STORE
+    implementation("androidx.datastore:datastore-preferences:1.1.1")
+
+    //
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.0")
 }
