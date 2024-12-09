@@ -8,6 +8,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.C242PS188.mentally_app.R
 import com.C242PS188.mentally_app.databinding.ActivityHomeBinding
+import com.c242ps188.mentally_app.ui.view.diagnose.DiagnoseSymptomsActivity
 import com.c242ps188.mentally_app.ui.view.login.LoginActivity
 
 class HomeActivity : AppCompatActivity() {
@@ -31,6 +32,11 @@ class HomeActivity : AppCompatActivity() {
     private fun setListener() {
         bindig.settings.setOnClickListener {
             val intent = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+        }
+
+        bindig.cvDiagnoseFromSymptomps.setOnClickListener {
+            val intent = Intent(this, DiagnoseSymptomsActivity::class.java)
             startActivity(intent)
         }
     }
