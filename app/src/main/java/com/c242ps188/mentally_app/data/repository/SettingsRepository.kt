@@ -23,4 +23,15 @@ class SettingsRepository(
         settingsPreferences.setLanguage(language)
     }
 
+    companion object {
+        @Volatile
+        private var instance: SettingsRepository? = null
+
+        fun getInstance(settingsPreferences: SettingsPreferences): SettingsRepository {
+            return instance ?: synchronized(this) {
+                instance ?: SettingsRepository(settingsPreferences)
+            }.also { instance = it }
+        }
+    }
+
 }
