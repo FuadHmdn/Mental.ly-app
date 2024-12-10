@@ -37,5 +37,9 @@
     <string name="email_required">Email required</string>
     <string name="password_required">Password required</string>
     <string name="invalid_email">invalid email</string>
+    <string name="judul_berita">Judul Berita</string>
+    <string name="back">Back</string>
+    <string name="date_updated">Date Updated</string>
+    <string name="news_example">News Example</string>
 
 </resources>
