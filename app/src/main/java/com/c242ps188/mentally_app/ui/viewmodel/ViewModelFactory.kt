@@ -25,7 +25,7 @@ class ViewModelFactory private constructor(
         if (modelClass.isAssignableFrom(SettingsViewModel::class.java)) {
             return SettingsViewModel(settingsRepository) as T
         }
-        if (modelClass.isAssignableFrom(SettingsViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(LoginViewModel::class.java)) {
             return LoginViewModel(loginRepository) as T
         }
         if (modelClass.isAssignableFrom(UsersViewModel::class.java)) {

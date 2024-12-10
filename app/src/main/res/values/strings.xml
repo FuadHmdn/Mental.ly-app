@@ -79,6 +79,8 @@
     <string name="language">Language</string>
     <string name="about">About</string>
     <string name="logout">LogOut</string>
+    <string name="registration_successful">Registration Successful</string>
+    <string name="success_your_account_is_ready_please_log_in_to_access_your_mental_ly_experience">Success! Your account is ready. Please log in to access your Mental.ly experience.</string>
 
 
 </resources>
