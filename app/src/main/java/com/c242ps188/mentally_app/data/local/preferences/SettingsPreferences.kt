@@ -40,6 +40,12 @@ class SettingsPreferences private constructor(private val dataStore: DataStore<P
         }
     }
 
+    suspend fun clearAllData() {
+        dataStore.edit { preferences ->
+            preferences.clear()
+        }
+    }
+
     companion object{
         private val THEME = booleanPreferencesKey("theme")
         private val LANGUAGE = stringPreferencesKey("language")

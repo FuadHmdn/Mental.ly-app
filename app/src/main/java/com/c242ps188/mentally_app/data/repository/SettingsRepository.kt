@@ -23,6 +23,10 @@ class SettingsRepository(
         settingsPreferences.setLanguage(language)
     }
 
+    suspend fun clearAllData(){
+        settingsPreferences.clearAllData()
+    }
+
     companion object {
         @Volatile
         private var instance: SettingsRepository? = null

@@ -108,6 +108,10 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
                 showToast(it)
             }
         }
+
+        diagnoseViewModel.isLoading.observe(this){
+            showLoading(it)
+        }
     }
 
     private fun updateUI() {
@@ -540,5 +544,39 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
 
     private fun showToast(message: String) {
         Toast.makeText(this@DiagnoseSymptomsActivity, message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun showLoading(loading: Boolean) {
+        if (loading) {
+            binding.diagnose3.visibility = View.GONE
+            binding.diagnose2.visibility = View.GONE
+            binding.diagnose4.visibility = View.GONE
+            binding.diagnose5.visibility = View.GONE
+            binding.diagnose6.visibility = View.GONE
+            binding.diagnose1.visibility = View.GONE
+            binding.btnBackDiagnose.visibility = View.GONE
+            binding.btnNext.visibility = View.GONE
+            binding.diagnose7.visibility = View.GONE
+            binding.diagnose8.visibility = View.GONE
+            binding.btnFinish.visibility = View.GONE
+            binding.diagnose9.visibility = View.GONE
+            binding.skor.visibility = View.GONE
+            binding.loading.visibility = View.VISIBLE
+        } else {
+            binding.diagnose3.visibility = View.GONE
+            binding.diagnose2.visibility = View.GONE
+            binding.diagnose4.visibility = View.GONE
+            binding.diagnose5.visibility = View.GONE
+            binding.diagnose6.visibility = View.GONE
+            binding.diagnose1.visibility = View.GONE
+            binding.btnBackDiagnose.visibility = View.GONE
+            binding.btnNext.visibility = View.GONE
+            binding.diagnose7.visibility = View.GONE
+            binding.diagnose8.visibility = View.GONE
+            binding.btnFinish.visibility = View.VISIBLE
+            binding.diagnose9.visibility = View.GONE
+            binding.skor.visibility = View.VISIBLE
+            binding.loading.visibility = View.GONE
+        }
     }
 }

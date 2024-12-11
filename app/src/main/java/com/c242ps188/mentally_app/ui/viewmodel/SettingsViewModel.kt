@@ -23,4 +23,10 @@ class SettingsViewModel(private val settingsRepository: SettingsRepository): Vie
         }
     }
 
+    fun clearAllData(){
+        viewModelScope.launch {
+            settingsRepository.clearAllData()
+        }
+    }
+
 }

@@ -12,7 +12,9 @@ import com.C242PS188.mentally_app.R
 import com.C242PS188.mentally_app.databinding.ActivityHomeBinding
 import com.c242ps188.mentally_app.ui.view.diagnose.DiagnoseSymptomsActivity
 import com.c242ps188.mentally_app.ui.view.settings.SettingsActivity
+import com.c242ps188.mentally_app.ui.viewmodel.DiagnoseViewModel
 import com.c242ps188.mentally_app.ui.viewmodel.SettingsViewModel
+import com.c242ps188.mentally_app.ui.viewmodel.UsersViewModel
 import com.c242ps188.mentally_app.ui.viewmodel.ViewModelFactory
 
 class HomeActivity : AppCompatActivity() {
@@ -20,6 +22,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var bindig: ActivityHomeBinding
     private val factory: ViewModelFactory by lazy { ViewModelFactory.getInstance(this) }
     private val settingsViewModel: SettingsViewModel by viewModels { factory }
+    private val usersViewModel: UsersViewModel by viewModels { factory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,6 +47,10 @@ class HomeActivity : AppCompatActivity() {
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
+        }
+
+        usersViewModel.getName.observe(this){
+            bindig.tvName.text = it
         }
     }
 

@@ -27,6 +27,7 @@ class DiagnoseViewModel(private val diagnoseRepository: DiagnoseRepository): Vie
     val diagnoseStatus get() = diagnoseRepository.diagnoseStatus
     val diagnoseMessage get() = diagnoseRepository.diagnoseMessage
     val diagnoseConfidence get() = diagnoseRepository.diagnoseConfidence
+    val isLoading get() = diagnoseRepository.isLoading
 
     init {
         _diagnoseProgress.value = 1
