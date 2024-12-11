@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.addTextChangedListener
@@ -15,6 +16,7 @@ import com.C242PS188.mentally_app.R
 import com.C242PS188.mentally_app.databinding.ActivityLoginBinding
 import com.c242ps188.mentally_app.ui.view.home.HomeActivity
 import com.c242ps188.mentally_app.ui.viewmodel.LoginViewModel
+import com.c242ps188.mentally_app.ui.viewmodel.SettingsViewModel
 import com.c242ps188.mentally_app.ui.viewmodel.UsersViewModel
 import com.c242ps188.mentally_app.ui.viewmodel.ViewModelFactory
 
@@ -25,6 +27,7 @@ class LoginActivity : AppCompatActivity() {
     private val factory: ViewModelFactory by lazy { ViewModelFactory.getInstance(this) }
     private val loginViewModel: LoginViewModel by viewModels { factory }
     private val usersViewModel: UsersViewModel by viewModels { factory }
+    private val settingsViewModel: SettingsViewModel by viewModels { factory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +48,14 @@ class LoginActivity : AppCompatActivity() {
         var name: String? = null
         var id: String? = null
         var email: String? = null
+
+        settingsViewModel.getTheme.observe(this){ isDarkMode ->
+            if (isDarkMode) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        }
 
         loginViewModel.userToken.observe(this) { userToken ->
             userToken?.let {

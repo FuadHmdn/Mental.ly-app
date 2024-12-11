@@ -10,8 +10,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.C242PS188.mentally_app.R
 import com.C242PS188.mentally_app.databinding.ActivitySettingsBinding
+import com.c242ps188.mentally_app.data.local.preferences.userDataStore
 import com.c242ps188.mentally_app.ui.view.login.LoginActivity
 import com.c242ps188.mentally_app.ui.viewmodel.SettingsViewModel
+import com.c242ps188.mentally_app.ui.viewmodel.UsersViewModel
 import com.c242ps188.mentally_app.ui.viewmodel.ViewModelFactory
 
 class SettingsActivity : AppCompatActivity() {
@@ -19,6 +21,7 @@ class SettingsActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySettingsBinding
     private val factory: ViewModelFactory by lazy { ViewModelFactory.getInstance(this) }
     private val settingsViewModel: SettingsViewModel by viewModels { factory }
+    private val usersViewModel: UsersViewModel by viewModels { factory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,7 +57,7 @@ class SettingsActivity : AppCompatActivity() {
             val intent = Intent(this, LoginActivity::class.java).apply {
                 flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             }
-            settingsViewModel.clearAllData()
+            usersViewModel.removeSession()
             startActivity(intent)
         }
 

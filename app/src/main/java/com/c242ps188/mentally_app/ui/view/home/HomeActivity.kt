@@ -13,6 +13,7 @@ import com.C242PS188.mentally_app.R
 import com.C242PS188.mentally_app.databinding.ActivityHomeBinding
 import com.c242ps188.mentally_app.ui.view.detailnews.DetailNewsActivity
 import com.c242ps188.mentally_app.ui.view.detailnews.ListNews
+import com.c242ps188.mentally_app.ui.view.diagnose.DiagnoseFeelingActivity
 import com.c242ps188.mentally_app.ui.view.diagnose.DiagnoseSymptomsActivity
 import com.c242ps188.mentally_app.ui.view.home.adapter.NewsAdapter
 import com.c242ps188.mentally_app.ui.view.settings.SettingsActivity
@@ -65,6 +66,11 @@ class HomeActivity : AppCompatActivity() {
 
         bindig.cvDiagnoseFromSymptomps.setOnClickListener {
             val intent = Intent(this, DiagnoseSymptomsActivity::class.java)
+            startActivity(intent)
+        }
+
+        bindig.cvShareYourFeelings.setOnClickListener {
+            val intent = Intent(this, DiagnoseFeelingActivity::class.java)
             startActivity(intent)
         }
     }
