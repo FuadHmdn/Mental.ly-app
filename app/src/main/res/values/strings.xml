@@ -37,6 +37,10 @@
     <string name="email_required">Email required</string>
     <string name="password_required">Password required</string>
     <string name="invalid_email">invalid email</string>
+    <string name="judul_berita">Judul Berita</string>
+    <string name="back">Back</string>
+    <string name="date_updated">Date Updated</string>
+    <string name="news_example">News Example</string>
     <string name="back_to_home">back to home</string>
     <string name="symptoms_diagnose">Symptoms Diagnose</string>
     <string name="next">Next</string>
@@ -92,6 +96,5 @@
     <string name="very_high_severity">Very High Severity!</string>
     <string name="very_high_severity_result">If you\'re feeling overwhelmed or unable to manage daily activities, seeking immediate assistance from a mental health professional is essential. They can offer the necessary support and help you navigate this challenging time. Take a break from any stressful commitments and prioritize your health above all.</string>
     <string name="input_should_be_1_hour_to_12_hours">Input should be 1 hour to 12 hours</string>
-
 
 </resources>
