@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Mentallyapp"
         tools:targetApi="31">
         <activity
+            android:name="com.c242ps188.mentally_app.ui.view.diagnose.DiagnoseFeelingActivity"
+            android:exported="false" />
+        <activity
             android:name="com.c242ps188.mentally_app.ui.view.settings.SettingsActivity"
             android:exported="false" />
         <activity
