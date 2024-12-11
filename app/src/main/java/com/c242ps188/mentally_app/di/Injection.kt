@@ -12,10 +12,6 @@ import com.c242ps188.mentally_app.data.repository.UsersPreferencesRepository
 
 object Injection {
 
-    fun provideDiagnoseRepository(context: Context): DiagnoseRepository {
-        return DiagnoseRepository()
-    }
-
     fun provideSettingsRepository(context: Context): SettingsRepository {
         val pref = SettingsPreferences.getInstance(context.applicationContext.dataStore, context.applicationContext)
         return SettingsRepository.getInstance(pref)
@@ -29,6 +25,11 @@ object Injection {
     fun provideLoginRepository(): LoginRepository {
         val apiService = ApiConfig.getApiService()
         return LoginRepository.getInstance(apiService)
+    }
+
+    fun provideDiagnoseRepository(): DiagnoseRepository {
+        val apiService = ApiConfig.getApiService()
+        return DiagnoseRepository.getInstance(apiService)
     }
 
 }

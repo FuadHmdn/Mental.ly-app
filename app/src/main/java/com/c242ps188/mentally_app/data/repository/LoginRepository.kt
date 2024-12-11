@@ -1,6 +1,5 @@
 package com.c242ps188.mentally_app.data.repository
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.c242ps188.mentally_app.data.remote.ApiService

@@ -54,7 +54,7 @@
                 android:layout_marginTop="32dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:visibility="gone">
+                tools:visibility="visible">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/diagnose_1"
@@ -826,7 +826,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
                         android:max="100"
-                        android:progress="84"
+                        android:progress="90"
                         android:progressDrawable="@drawable/bg_progress_bar"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_lets_start7" />
@@ -922,7 +922,7 @@
                         android:layout_marginTop="8dp"
                         android:layout_marginEnd="16dp"
                         android:max="100"
-                        android:progress="90"
+                        android:progress="100"
                         android:progressDrawable="@drawable/bg_progress_bar"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/tv_lets_start8" />
@@ -978,104 +978,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="150dp"
                         app:layout_constraintTop_toBottomOf="@id/radio_group8" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </ScrollView>
-
-            <!-- DEPRESION -->
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginTop="32dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:visibility="gone">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/diagnose_10"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/tv_lets_start9"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:fontFamily="@font/poppins_semibold"
-                        android:text="@string/lets_start"
-                        android:textColor="@color/md_theme_primary"
-                        android:textSize="16sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ProgressBar
-                        android:id="@+id/progress_bar9"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="8dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="16dp"
-                        android:max="100"
-                        android:progress="100"
-                        android:progressDrawable="@drawable/bg_progress_bar"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tv_lets_start9" />
-
-                    <TextView
-                        android:id="@+id/tv_depression"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="24dp"
-                        android:layout_marginEnd="16dp"
-                        android:fontFamily="@font/poppins_regular"
-                        android:text="@string/have_you_ever_been_diagnosed_with_experienced_symptoms_of_depression"
-                        android:textColor="@color/md_theme_primary"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/progress_bar9" />
-
-
-                    <RadioGroup
-                        android:id="@+id/radio_group9"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="24dp"
-                        android:layout_marginEnd="16dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/tv_depression">
-
-                        <RadioButton
-                            android:id="@+id/rb_yes9"
-                            android:layout_width="190dp"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/bg_radio_button"
-                            android:button="@null"
-                            android:gravity="center"
-                            android:text="@string/yes" />
-
-                        <RadioButton
-                            android:id="@+id/rb_no9"
-                            android:layout_width="190dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:background="@drawable/bg_radio_button"
-                            android:button="@null"
-                            android:gravity="center"
-                            android:text="@string/no" />
-
-                    </RadioGroup>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="150dp"
-                        android:layout_marginTop="32dp"
-                        app:layout_constraintTop_toBottomOf="@id/radio_group8"
-                        tools:layout_editor_absoluteX="0dp" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -1253,15 +1155,29 @@
                     </LinearLayout>
 
                     <TextView
-                        android:id="@+id/tv_result_sugestion"
+                        android:id="@+id/tv_result"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:layout_marginStart="16dp"
                         android:layout_marginEnd="16dp"
+                        android:textColor="@color/md_theme_primary"
+                        android:textSize="18sp"
+                        android:fontFamily="@font/poppins_bold"
                         android:layout_marginTop="32dp"
                         app:layout_constraintTop_toBottomOf="@id/circularProgressBar"
-                        android:text="Perlu bantuan profesional untuk pencegahan berupa Konseling, dapat menjadi masalah yang mengganggu dalam keseharian dan dapat mengarah menjadi berat, terkadang diperlukan bantuan obat-obatan dari dokter Psikiater" />
+                        tools:text="normal" />
+
+                    <TextView
+                        android:id="@+id/tv_result_sugestion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:gravity="center"
+                        tools:text="Perlu bantuan profesional untuk pencegahan berupa Konseling, dapat menjadi masalah yang mengganggu dalam keseharian dan dapat mengarah menjadi berat, terkadang diperlukan bantuan obat-obatan dari dokter Psikiater"
+                        app:layout_constraintTop_toBottomOf="@id/tv_result" />
 
 
                     <View
