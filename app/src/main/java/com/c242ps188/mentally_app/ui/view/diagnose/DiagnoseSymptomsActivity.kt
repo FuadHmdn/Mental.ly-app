@@ -1,9 +1,9 @@
 package com.c242ps188.mentally_app.ui.view.diagnose
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -16,7 +16,10 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.addTextChangedListener
 import com.C242PS188.mentally_app.R
 import com.C242PS188.mentally_app.databinding.ActivityDiagnoseSymptomsBinding
+import com.c242ps188.mentally_app.data.local.model.MentalHealthData
+import com.c242ps188.mentally_app.data.local.model.MentalHealthRequest
 import com.c242ps188.mentally_app.ui.viewmodel.DiagnoseViewModel
+import com.c242ps188.mentally_app.ui.viewmodel.UsersViewModel
 import com.c242ps188.mentally_app.ui.viewmodel.ViewModelFactory
 
 class DiagnoseSymptomsActivity : AppCompatActivity() {
@@ -27,6 +30,8 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
         ViewModelFactory.getInstance(this)
     }
     private val diagnoseViewModel: DiagnoseViewModel by viewModels { factory }
+    private val usersViewModel: UsersViewModel by viewModels { factory }
+    private var userId: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,191 +43,236 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, 0)
             insets
         }
-
+        observe()
         setListener()
         updateUI()
     }
 
-    private fun updateUI() {
-        when (diagnoseViewModel.diagnoseProgress) {
-            1 -> {
-                binding.diagnose1.visibility = View.VISIBLE
-                binding.diagnose2.visibility = View.GONE
-                binding.diagnose3.visibility = View.GONE
-                binding.skor.visibility = View.GONE
-                binding.btnFinish.visibility = View.GONE
-                binding.diagnose4.visibility = View.GONE
-                binding.diagnose5.visibility = View.GONE
-                binding.btnNext.visibility = View.VISIBLE
-                binding.btnBackDiagnose.visibility = View.GONE
-                binding.diagnose6.visibility = View.GONE
-                binding.diagnose7.visibility = View.GONE
-                binding.diagnose8.visibility = View.GONE
-                binding.diagnose10.visibility = View.GONE
-                binding.diagnose9.visibility = View.GONE
-            }
+    @SuppressLint("SetTextI18n")
+    private fun observe() {
+        diagnoseViewModel.diagnoseConfidence.observe(this) {
+            val confidence = it?.replace("%", "")?.toFloat()
 
-            2 -> {
-                binding.diagnose3.visibility = View.GONE
-                binding.diagnose4.visibility = View.GONE
-                binding.diagnose5.visibility = View.GONE
-                binding.diagnose2.visibility = View.VISIBLE
-                binding.skor.visibility = View.GONE
-                binding.diagnose1.visibility = View.GONE
-                binding.btnBackDiagnose.visibility = View.VISIBLE
-                binding.diagnose6.visibility = View.GONE
-                binding.diagnose10.visibility = View.GONE
-                binding.btnFinish.visibility = View.GONE
-                binding.diagnose7.visibility = View.GONE
-                binding.diagnose8.visibility = View.GONE
-                binding.diagnose9.visibility = View.GONE
-            }
+            if (confidence != null) {
+                binding.tvSkorResult.text = "${confidence.toInt()}%"
+                binding.circularProgressBar.setProgressWithAnimation(confidence, 1000)
 
-            3 -> {
-                binding.diagnose3.visibility = View.VISIBLE
-                binding.diagnose2.visibility = View.GONE
-                binding.diagnose4.visibility = View.GONE
-                binding.diagnose5.visibility = View.GONE
-                binding.diagnose1.visibility = View.GONE
-                binding.btnBackDiagnose.visibility = View.VISIBLE
-                binding.skor.visibility = View.GONE
-                binding.diagnose6.visibility = View.GONE
-                binding.diagnose7.visibility = View.GONE
-                binding.btnFinish.visibility = View.GONE
-                binding.diagnose10.visibility = View.GONE
-                binding.diagnose8.visibility = View.GONE
-                binding.diagnose9.visibility = View.GONE
-            }
+                when {
+                    confidence < 25 -> {
+                        binding.tvResult.text = getString(R.string.normal)
+                        binding.tvResultSugestion.text =
+                            getString(R.string.normal_result)
+                    }
 
-            4 -> {
-                binding.diagnose3.visibility = View.GONE
-                binding.diagnose2.visibility = View.GONE
-                binding.diagnose4.visibility = View.VISIBLE
-                binding.skor.visibility = View.GONE
-                binding.diagnose6.visibility = View.GONE
-                binding.btnFinish.visibility = View.GONE
-                binding.diagnose5.visibility = View.GONE
-                binding.diagnose1.visibility = View.GONE
-                binding.btnBackDiagnose.visibility = View.VISIBLE
-                binding.diagnose7.visibility = View.GONE
-                binding.diagnose8.visibility = View.GONE
-                binding.diagnose10.visibility = View.GONE
-                binding.diagnose9.visibility = View.GONE
-            }
+                    confidence in 25.0..29.9 -> {
+                        binding.tvResult.text = getString(R.string.low_severity)
+                        binding.tvResultSugestion.text =
+                            getString(R.string.low_sevirity_result)
+                    }
 
-            5 -> {
-                binding.diagnose3.visibility = View.GONE
-                binding.diagnose2.visibility = View.GONE
-                binding.diagnose4.visibility = View.GONE
-                binding.skor.visibility = View.GONE
-                binding.diagnose5.visibility = View.VISIBLE
-                binding.btnFinish.visibility = View.GONE
-                binding.diagnose6.visibility = View.GONE
-                binding.diagnose1.visibility = View.GONE
-                binding.btnBackDiagnose.visibility = View.VISIBLE
-                binding.diagnose7.visibility = View.GONE
-                binding.diagnose8.visibility = View.GONE
-                binding.diagnose10.visibility = View.GONE
-                binding.diagnose9.visibility = View.GONE
-            }
+                    confidence in 30.0..59.9 -> {
+                        binding.tvResult.text = getString(R.string.moderate_severity)
+                        binding.tvResultSugestion.text =
+                            getString(R.string.moderete_severity)
+                    }
 
-            6 -> {
-                binding.diagnose3.visibility = View.GONE
-                binding.diagnose2.visibility = View.GONE
-                binding.diagnose4.visibility = View.GONE
-                binding.diagnose5.visibility = View.GONE
-                binding.skor.visibility = View.GONE
-                binding.diagnose6.visibility = View.VISIBLE
-                binding.diagnose1.visibility = View.GONE
-                binding.btnBackDiagnose.visibility = View.VISIBLE
-                binding.btnFinish.visibility = View.GONE
-                binding.diagnose7.visibility = View.GONE
-                binding.diagnose8.visibility = View.GONE
-                binding.diagnose10.visibility = View.GONE
-                binding.diagnose9.visibility = View.GONE
-            }
+                    confidence in 60.0..79.9 -> {
+                        binding.tvResult.text = getString(R.string.high_severity)
+                        binding.tvResultSugestion.text =
+                            getString(R.string.high_sevirity)
+                    }
 
-            7 -> {
-                binding.diagnose3.visibility = View.GONE
-                binding.diagnose2.visibility = View.GONE
-                binding.diagnose4.visibility = View.GONE
-                binding.diagnose5.visibility = View.GONE
-                binding.skor.visibility = View.GONE
-                binding.diagnose6.visibility = View.GONE
-                binding.diagnose1.visibility = View.GONE
-                binding.diagnose9.visibility = View.GONE
-                binding.btnBackDiagnose.visibility = View.VISIBLE
-                binding.btnFinish.visibility = View.GONE
-                binding.diagnose7.visibility = View.VISIBLE
-                binding.diagnose8.visibility = View.GONE
-                binding.diagnose10.visibility = View.GONE
-            }
-
-            8 -> {
-                binding.diagnose3.visibility = View.GONE
-                binding.diagnose2.visibility = View.GONE
-                binding.diagnose4.visibility = View.GONE
-                binding.diagnose5.visibility = View.GONE
-                binding.btnFinish.visibility = View.GONE
-                binding.diagnose6.visibility = View.GONE
-                binding.diagnose1.visibility = View.GONE
-                binding.skor.visibility = View.GONE
-                binding.btnBackDiagnose.visibility = View.VISIBLE
-                binding.diagnose7.visibility = View.GONE
-                binding.diagnose8.visibility = View.VISIBLE
-                binding.diagnose9.visibility = View.GONE
-                binding.diagnose10.visibility = View.GONE
-            }
-
-            9 -> {
-                binding.diagnose3.visibility = View.GONE
-                binding.diagnose2.visibility = View.GONE
-                binding.diagnose4.visibility = View.GONE
-                binding.diagnose5.visibility = View.GONE
-                binding.diagnose6.visibility = View.GONE
-                binding.diagnose1.visibility = View.GONE
-                binding.btnFinish.visibility = View.GONE
-                binding.btnBackDiagnose.visibility = View.VISIBLE
-                binding.diagnose7.visibility = View.GONE
-                binding.diagnose8.visibility = View.GONE
-                binding.skor.visibility = View.GONE
-                binding.diagnose9.visibility = View.VISIBLE
-                binding.diagnose10.visibility = View.GONE
-            }
-
-            10 -> {
-                binding.diagnose3.visibility = View.GONE
-                binding.diagnose2.visibility = View.GONE
-                binding.btnFinish.visibility = View.GONE
-                binding.diagnose4.visibility = View.GONE
-                binding.diagnose5.visibility = View.GONE
-                binding.diagnose6.visibility = View.GONE
-                binding.diagnose1.visibility = View.GONE
-                binding.btnBackDiagnose.visibility = View.VISIBLE
-                binding.diagnose7.visibility = View.GONE
-                binding.diagnose8.visibility = View.GONE
-                binding.diagnose9.visibility = View.GONE
-                binding.skor.visibility = View.GONE
-                binding.diagnose10.visibility = View.VISIBLE
-            }
-
-            12 -> {
-                binding.diagnose3.visibility = View.GONE
-                binding.diagnose2.visibility = View.GONE
-                binding.diagnose4.visibility = View.GONE
-                binding.diagnose5.visibility = View.GONE
-                binding.diagnose6.visibility = View.GONE
-                binding.diagnose1.visibility = View.GONE
-                binding.btnBackDiagnose.visibility = View.GONE
-                binding.btnNext.visibility = View.GONE
-                binding.diagnose7.visibility = View.GONE
-                binding.diagnose8.visibility = View.GONE
-                binding.btnFinish.visibility = View.VISIBLE
-                binding.diagnose9.visibility = View.GONE
-                binding.diagnose10.visibility = View.GONE
-                binding.skor.visibility = View.VISIBLE
+                    confidence >= 80 -> {
+                        binding.tvResult.text = getString(R.string.very_high_severity)
+                        binding.tvResultSugestion.text =
+                            getString(R.string.very_high_severity_result)
+                    }
+                }
             }
         }
+
+        usersViewModel.getId.observe(this) { id ->
+            id?.let {
+                userId = it
+            }
+        }
+
+        diagnoseViewModel.diagnoseStatus.observe(this) {
+            if (it == 200) {
+                diagnoseViewModel.incrementProgress()
+            }
+        }
+
+        diagnoseViewModel.diagnoseMessage.observe(this) {
+            if (it != null) {
+                showToast(it)
+            }
+        }
+
+        diagnoseViewModel.isLoading.observe(this){
+            showLoading(it)
+        }
+    }
+
+    private fun updateUI() {
+        diagnoseViewModel.diagnoseProgress.observe(this) { progress ->
+            when (progress) {
+
+                1 -> {
+                    binding.diagnose1.visibility = View.VISIBLE
+                    binding.diagnose2.visibility = View.GONE
+                    binding.diagnose3.visibility = View.GONE
+                    binding.skor.visibility = View.GONE
+                    binding.btnFinish.visibility = View.GONE
+                    binding.diagnose4.visibility = View.GONE
+                    binding.diagnose5.visibility = View.GONE
+                    binding.btnNext.visibility = View.VISIBLE
+                    binding.btnBackDiagnose.visibility = View.GONE
+                    binding.diagnose6.visibility = View.GONE
+                    binding.diagnose7.visibility = View.GONE
+                    binding.diagnose8.visibility = View.GONE
+                    binding.diagnose9.visibility = View.GONE
+                }
+
+                2 -> {
+                    binding.diagnose3.visibility = View.GONE
+                    binding.diagnose4.visibility = View.GONE
+                    binding.diagnose5.visibility = View.GONE
+                    binding.diagnose2.visibility = View.VISIBLE
+                    binding.skor.visibility = View.GONE
+                    binding.diagnose1.visibility = View.GONE
+                    binding.btnBackDiagnose.visibility = View.VISIBLE
+                    binding.diagnose6.visibility = View.GONE
+                    binding.btnFinish.visibility = View.GONE
+                    binding.diagnose7.visibility = View.GONE
+                    binding.diagnose8.visibility = View.GONE
+                    binding.diagnose9.visibility = View.GONE
+                }
+
+                3 -> {
+                    binding.diagnose3.visibility = View.VISIBLE
+                    binding.diagnose2.visibility = View.GONE
+                    binding.diagnose4.visibility = View.GONE
+                    binding.diagnose5.visibility = View.GONE
+                    binding.diagnose1.visibility = View.GONE
+                    binding.btnBackDiagnose.visibility = View.VISIBLE
+                    binding.skor.visibility = View.GONE
+                    binding.diagnose6.visibility = View.GONE
+                    binding.diagnose7.visibility = View.GONE
+                    binding.btnFinish.visibility = View.GONE
+                    binding.diagnose8.visibility = View.GONE
+                    binding.diagnose9.visibility = View.GONE
+                }
+
+                4 -> {
+                    binding.diagnose3.visibility = View.GONE
+                    binding.diagnose2.visibility = View.GONE
+                    binding.diagnose4.visibility = View.VISIBLE
+                    binding.skor.visibility = View.GONE
+                    binding.diagnose6.visibility = View.GONE
+                    binding.btnFinish.visibility = View.GONE
+                    binding.diagnose5.visibility = View.GONE
+                    binding.diagnose1.visibility = View.GONE
+                    binding.btnBackDiagnose.visibility = View.VISIBLE
+                    binding.diagnose7.visibility = View.GONE
+                    binding.diagnose8.visibility = View.GONE
+                    binding.diagnose9.visibility = View.GONE
+                }
+
+                5 -> {
+                    binding.diagnose3.visibility = View.GONE
+                    binding.diagnose2.visibility = View.GONE
+                    binding.diagnose4.visibility = View.GONE
+                    binding.skor.visibility = View.GONE
+                    binding.diagnose5.visibility = View.VISIBLE
+                    binding.btnFinish.visibility = View.GONE
+                    binding.diagnose6.visibility = View.GONE
+                    binding.diagnose1.visibility = View.GONE
+                    binding.btnBackDiagnose.visibility = View.VISIBLE
+                    binding.diagnose7.visibility = View.GONE
+                    binding.diagnose8.visibility = View.GONE
+                    binding.diagnose9.visibility = View.GONE
+                }
+
+                6 -> {
+                    binding.diagnose3.visibility = View.GONE
+                    binding.diagnose2.visibility = View.GONE
+                    binding.diagnose4.visibility = View.GONE
+                    binding.diagnose5.visibility = View.GONE
+                    binding.skor.visibility = View.GONE
+                    binding.diagnose6.visibility = View.VISIBLE
+                    binding.diagnose1.visibility = View.GONE
+                    binding.btnBackDiagnose.visibility = View.VISIBLE
+                    binding.btnFinish.visibility = View.GONE
+                    binding.diagnose7.visibility = View.GONE
+                    binding.diagnose8.visibility = View.GONE
+                    binding.diagnose9.visibility = View.GONE
+                }
+
+                7 -> {
+                    binding.diagnose3.visibility = View.GONE
+                    binding.diagnose2.visibility = View.GONE
+                    binding.diagnose4.visibility = View.GONE
+                    binding.diagnose5.visibility = View.GONE
+                    binding.skor.visibility = View.GONE
+                    binding.diagnose6.visibility = View.GONE
+                    binding.diagnose1.visibility = View.GONE
+                    binding.diagnose9.visibility = View.GONE
+                    binding.btnBackDiagnose.visibility = View.VISIBLE
+                    binding.btnFinish.visibility = View.GONE
+                    binding.diagnose7.visibility = View.VISIBLE
+                    binding.diagnose8.visibility = View.GONE
+                }
+
+                8 -> {
+                    binding.diagnose3.visibility = View.GONE
+                    binding.diagnose2.visibility = View.GONE
+                    binding.diagnose4.visibility = View.GONE
+                    binding.diagnose5.visibility = View.GONE
+                    binding.btnFinish.visibility = View.GONE
+                    binding.diagnose6.visibility = View.GONE
+                    binding.diagnose1.visibility = View.GONE
+                    binding.skor.visibility = View.GONE
+                    binding.btnBackDiagnose.visibility = View.VISIBLE
+                    binding.diagnose7.visibility = View.GONE
+                    binding.diagnose8.visibility = View.VISIBLE
+                    binding.diagnose9.visibility = View.GONE
+                }
+
+                9 -> {
+                    binding.diagnose3.visibility = View.GONE
+                    binding.diagnose2.visibility = View.GONE
+                    binding.diagnose4.visibility = View.GONE
+                    binding.diagnose5.visibility = View.GONE
+                    binding.diagnose6.visibility = View.GONE
+                    binding.diagnose1.visibility = View.GONE
+                    binding.btnFinish.visibility = View.GONE
+                    binding.btnBackDiagnose.visibility = View.VISIBLE
+                    binding.diagnose7.visibility = View.GONE
+                    binding.diagnose8.visibility = View.GONE
+                    binding.skor.visibility = View.GONE
+                    binding.diagnose9.visibility = View.VISIBLE
+                }
+
+                11 -> {
+                    binding.diagnose3.visibility = View.GONE
+                    binding.diagnose2.visibility = View.GONE
+                    binding.diagnose4.visibility = View.GONE
+                    binding.diagnose5.visibility = View.GONE
+                    binding.diagnose6.visibility = View.GONE
+                    binding.diagnose1.visibility = View.GONE
+                    binding.btnBackDiagnose.visibility = View.GONE
+                    binding.btnNext.visibility = View.GONE
+                    binding.diagnose7.visibility = View.GONE
+                    binding.diagnose8.visibility = View.GONE
+                    binding.btnFinish.visibility = View.VISIBLE
+                    binding.diagnose9.visibility = View.GONE
+                    binding.skor.visibility = View.VISIBLE
+                }
+
+            }
+        }
+
     }
 
 
@@ -232,6 +282,11 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
             android.R.layout.simple_spinner_item,
             ageOptions
         )
+
+        binding.btnFinish.setOnClickListener {
+            finish()
+            diagnoseViewModel.resetProgress()
+        }
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerAge.adapter = adapter
@@ -245,7 +300,7 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
             ) {
                 parent?.let {
                     val inputAge = it.getItemAtPosition(position).toString()
-                    diagnoseViewModel.age = inputAge.toFloatOrNull()
+                    diagnoseViewModel.age = inputAge.toInt()
                 }
             }
 
@@ -410,75 +465,118 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
             }
         }
 
-        // DEPRESSION
-        binding.radioGroup9.setOnCheckedChangeListener { _, checkedId ->
-            when (checkedId) {
-                R.id.rb_yes9 -> {
-                    diagnoseViewModel.depression = 1F
-                }
-
-                R.id.rb_no9 -> {
-                    diagnoseViewModel.depression = 0F
-                }
-            }
-        }
-
         binding.btnNext.setOnClickListener {
-            if (diagnoseViewModel.diagnoseProgress != 11) {
-                diagnoseViewModel.diagnoseProgress++
-                updateUI()
+            if (diagnoseViewModel.diagnoseProgress.value != 11) {
+                diagnoseViewModel.incrementProgress()
             }
 
             var valid = true
 
-            if ( diagnoseViewModel.age == null || diagnoseViewModel.gender == null || diagnoseViewModel.selfHarm == null
-                || diagnoseViewModel.depression == null || diagnoseViewModel.dietaryHabits == null || diagnoseViewModel.sleepHours == null
+            if (diagnoseViewModel.age == null || diagnoseViewModel.gender == null || diagnoseViewModel.selfHarm == null
+                || diagnoseViewModel.dietaryHabits == null || diagnoseViewModel.sleepHours == null
                 || diagnoseViewModel.workSatisfied == null || diagnoseViewModel.workPressure == null || diagnoseViewModel.historyMental == null
                 || diagnoseViewModel.stressLevel == null || diagnoseViewModel.workHours == null
             ) {
                 valid = false
             }
 
-            if (diagnoseViewModel.diagnoseProgress == 11 && valid) {
+            if (diagnoseViewModel.diagnoseProgress.value == 10 && valid) {
+                val age = diagnoseViewModel.age
+                val gender = diagnoseViewModel.gender
+                val workPressure = diagnoseViewModel.workPressure
+                val jobSatisfaction = diagnoseViewModel.workSatisfied
+                val sleepDuration = diagnoseViewModel.sleepHours
+                val dietaryHabits = diagnoseViewModel.dietaryHabits
+                val suicidalThoughts = diagnoseViewModel.selfHarm
+                val workHours = diagnoseViewModel.workHours
+                val financialStress = diagnoseViewModel.stressLevel
+                val historyMentalIllness = diagnoseViewModel.historyMental
 
-                diagnoseViewModel.diagnoseProgress++
-                updateUI()
-                binding.circularProgressBar.setProgressWithAnimation(70f, 1000)
+                val data = MentalHealthData(
+                    age,
+                    gender,
+                    workPressure,
+                    jobSatisfaction,
+                    sleepDuration,
+                    dietaryHabits,
+                    suicidalThoughts,
+                    workHours,
+                    financialStress, historyMentalIllness
+                )
 
-            } else if (diagnoseViewModel.diagnoseProgress == 11 && !valid) {
-                diagnoseViewModel.diagnoseProgress--
+                val diagnoseRequest = userId?.let { it1 -> MentalHealthRequest(it1, data) }
+
+                if (diagnoseRequest != null) {
+                    diagnoseViewModel.submitMentalHealthData(diagnoseRequest)
+                }
+
+            } else if (diagnoseViewModel.diagnoseProgress.value == 10 && !valid) {
                 showToast(getString(R.string.please_fill_in_all_the_data))
             }
         }
 
         // VALIDATE INPUT WORK HOURS
-        binding.edWorkHours.addTextChangedListener (object : TextWatcher{
+        binding.edWorkHours.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
             override fun afterTextChanged(s: Editable?) {
                 val input = s?.toString()?.toIntOrNull()
-                if ( input !in 1..12) {
+                if (input !in 1..12) {
                     s?.clear()
                     diagnoseViewModel.workHours = null
-                    binding.edWorkHours.error = "Input should be 1 hour to 12 hours"
-                    Log.d("HOURS", s.toString())
+                    binding.edWorkHours.error =
+                        getString(R.string.input_should_be_1_hour_to_12_hours)
                 }
             }
 
         })
 
         binding.btnBackDiagnose.setOnClickListener {
-            diagnoseViewModel.diagnoseProgress--
-            updateUI()
+            diagnoseViewModel.decrementProgress()
         }
 
         binding.btnBack.setOnClickListener {
             finish()
+            diagnoseViewModel.resetProgress()
         }
     }
 
     private fun showToast(message: String) {
         Toast.makeText(this@DiagnoseSymptomsActivity, message, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun showLoading(loading: Boolean) {
+        if (loading) {
+            binding.diagnose3.visibility = View.GONE
+            binding.diagnose2.visibility = View.GONE
+            binding.diagnose4.visibility = View.GONE
+            binding.diagnose5.visibility = View.GONE
+            binding.diagnose6.visibility = View.GONE
+            binding.diagnose1.visibility = View.GONE
+            binding.btnBackDiagnose.visibility = View.GONE
+            binding.btnNext.visibility = View.GONE
+            binding.diagnose7.visibility = View.GONE
+            binding.diagnose8.visibility = View.GONE
+            binding.btnFinish.visibility = View.GONE
+            binding.diagnose9.visibility = View.GONE
+            binding.skor.visibility = View.GONE
+            binding.loading.visibility = View.VISIBLE
+        } else {
+            binding.diagnose3.visibility = View.GONE
+            binding.diagnose2.visibility = View.GONE
+            binding.diagnose4.visibility = View.GONE
+            binding.diagnose5.visibility = View.GONE
+            binding.diagnose6.visibility = View.GONE
+            binding.diagnose1.visibility = View.GONE
+            binding.btnBackDiagnose.visibility = View.GONE
+            binding.btnNext.visibility = View.GONE
+            binding.diagnose7.visibility = View.GONE
+            binding.diagnose8.visibility = View.GONE
+            binding.btnFinish.visibility = View.VISIBLE
+            binding.diagnose9.visibility = View.GONE
+            binding.skor.visibility = View.VISIBLE
+            binding.loading.visibility = View.GONE
+        }
     }
 }

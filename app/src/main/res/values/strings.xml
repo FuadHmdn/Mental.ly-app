@@ -74,6 +74,24 @@
     <string name="back_depression_inventory_bdi_skor">Back Depression Inventory (BDI) SKOR</string>
     <string name="detected_for_mental_health_issues">Detected for Mental Health Issues</string>
     <string name="please_fill_in_all_the_data">Please fill in all the data</string>
+    <string name="light_mode">Light Mode</string>
+    <string name="dark_mode">Dark Mode</string>
+    <string name="language">Language</string>
+    <string name="about">About</string>
+    <string name="logout">LogOut</string>
+    <string name="registration_successful">Registration Successful</string>
+    <string name="success_your_account_is_ready_please_log_in_to_access_your_mental_ly_experience">Success! Your account is ready. Please log in to access your Mental.ly experience.</string>
+    <string name="normal">Normal</string>
+    <string name="normal_result">Your mental health seems stable! Keep up the good work! Maintain a balanced routine, enjoy what you do, and rest well. Stay joyful and healthy!</string>
+    <string name="low_severity">Low Severity</string>
+    <string name="low_sevirity_result">At this stage, it’s important to monitor your mental well-being. Consider taking short breaks, engaging in light physical activities, and maintaining a healthy sleep routine. If symptoms persist, consulting a mental health professional could help.</string>
+    <string name="moderate_severity">Moderate Severity</string>
+    <string name="moderete_severity">Your mental health may benefit from reducing your workload and taking regular breaks. Establish a consistent sleep schedule and focus on stress-reducing activities. Don’t hesitate to consult a mental health professional for personalized guidance.</string>
+    <string name="high_severity">High Severity</string>
+    <string name="high_sevirity">It’s crucial to address your well-being by balancing rest, relaxation, and work. Light physical activities, such as walking or stretching, can help ease anxiety. Please consult a mental health professional as soon as possible to get support and create a tailored plan for recovery.</string>
+    <string name="very_high_severity">Very High Severity!</string>
+    <string name="very_high_severity_result">If you\'re feeling overwhelmed or unable to manage daily activities, seeking immediate assistance from a mental health professional is essential. They can offer the necessary support and help you navigate this challenging time. Take a break from any stressful commitments and prioritize your health above all.</string>
+    <string name="input_should_be_1_hour_to_12_hours">Input should be 1 hour to 12 hours</string>
 
 
 </resources>
