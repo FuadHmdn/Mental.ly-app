@@ -2,7 +2,6 @@ package com.c242ps188.mentally_app.ui.view.settings
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -38,8 +37,10 @@ class SettingsActivity : AppCompatActivity() {
 
     private fun observe() {
         settingsViewModel.getTheme.observe(this) { isDarkMode ->
-            if (binding.switchDarkMode.isChecked != isDarkMode) {
-                binding.switchDarkMode.isChecked = isDarkMode
+            binding.switchDarkMode.setOnCheckedChangeListener(null)
+            binding.switchDarkMode.isChecked = isDarkMode
+            binding.switchDarkMode.setOnCheckedChangeListener { _, isChecked ->
+                updateTheme(isChecked)
             }
         }
     }
@@ -58,15 +59,16 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         binding.switchDarkMode.setOnCheckedChangeListener { _, isChecked ->
-            settingsViewModel.setTheme(isChecked)
-            if (isChecked) {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                Log.d("DARK_MODE", "TRUE")
-            } else {
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                Log.d("DARK_MODE", "FALSE")
-            }
-            Log.d("DARK_MODE", isChecked.toString())
+            updateTheme(isChecked)
         }
+    }
+
+    private fun updateTheme(isChecked: Boolean) {
+        if (isChecked) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+        settingsViewModel.setTheme(isChecked)
     }
 }

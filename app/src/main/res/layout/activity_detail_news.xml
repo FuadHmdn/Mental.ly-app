@@ -35,6 +35,17 @@
             app:layout_constraintBottom_toBottomOf="@id/btn_back"
             app:layout_constraintTop_toTopOf="@id/btn_back" />
 
+        <ImageView
+            android:id="@+id/view_more"
+            android:layout_width="28dp"
+            android:layout_height="25dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/btn_back"
+            android:src="@drawable/paperplane"
+            android:paddingTop="8dp"
+            app:layout_constraintBottom_toBottomOf="@id/btn_back" />
+
         <View
             android:id="@+id/divider"
             android:layout_width="match_parent"
@@ -79,6 +90,7 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:scaleType="centerCrop"
             android:contentDescription="@string/news_image"
             android:src="@drawable/detail_news_example"
             app:layout_constraintEnd_toEndOf="parent"
