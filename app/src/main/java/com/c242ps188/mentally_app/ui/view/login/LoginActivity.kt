@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.widget.addTextChangedListener
@@ -15,6 +16,7 @@ import com.C242PS188.mentally_app.R
 import com.C242PS188.mentally_app.databinding.ActivityLoginBinding
 import com.c242ps188.mentally_app.ui.view.home.HomeActivity
 import com.c242ps188.mentally_app.ui.viewmodel.LoginViewModel
+import com.c242ps188.mentally_app.ui.viewmodel.SettingsViewModel
 import com.c242ps188.mentally_app.ui.viewmodel.UsersViewModel
 import com.c242ps188.mentally_app.ui.viewmodel.ViewModelFactory
 
@@ -25,6 +27,7 @@ class LoginActivity : AppCompatActivity() {
     private val factory: ViewModelFactory by lazy { ViewModelFactory.getInstance(this) }
     private val loginViewModel: LoginViewModel by viewModels { factory }
     private val usersViewModel: UsersViewModel by viewModels { factory }
+    private val settingsViewModel: SettingsViewModel by viewModels { factory }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            v.setPadding(0, systemBars.top, 0, 0)
             insets
         }
         observe()
@@ -45,6 +48,14 @@ class LoginActivity : AppCompatActivity() {
         var name: String? = null
         var id: String? = null
         var email: String? = null
+
+        settingsViewModel.getTheme.observe(this){ isDarkMode ->
+            if (isDarkMode) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        }
 
         loginViewModel.userToken.observe(this) { userToken ->
             userToken?.let {
@@ -61,8 +72,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginViewModel.loginMessage.observe(this) { message ->
-            if (message != "Email atau Password salah") {
-
+            if (message == "200") {
                 val currentToken = token
                 val currentName = name
                 val currentId = id
@@ -76,9 +86,10 @@ class LoginActivity : AppCompatActivity() {
                     flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                 }
                 startActivity(intent)
-
             } else {
-                showToast(message)
+                if (message != null) {
+                    showToast(message)
+                }
             }
         }
     }

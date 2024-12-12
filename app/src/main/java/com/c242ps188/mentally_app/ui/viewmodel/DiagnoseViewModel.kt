@@ -14,7 +14,7 @@ class DiagnoseViewModel(private val diagnoseRepository: DiagnoseRepository): Vie
     val diagnoseProgress: LiveData<Int> get() = _diagnoseProgress
 
     var gender: Int? = null
-    var age: Int? = null
+    var age: Float? = null
     var workPressure: Float? = null
     var workSatisfied: Float? = null
     var stressLevel: Float? = null
@@ -56,5 +56,9 @@ class DiagnoseViewModel(private val diagnoseRepository: DiagnoseRepository): Vie
     fun resetProgress() {
         diagnoseRepository.resetDiagnose()
         _diagnoseProgress.value = 1
+    }
+
+    fun resetDiagnoseMessage(){
+        diagnoseRepository.resetDiagnoseMessage()
     }
 }

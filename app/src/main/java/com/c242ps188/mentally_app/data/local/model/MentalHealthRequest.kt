@@ -6,7 +6,7 @@ data class MentalHealthRequest(
 )
 
 data class MentalHealthData(
-    val age: Int? = null,
+    val age: Float? = null,
     val gender: Int? = null,
     val work_pressure: Float? = null,
     val job_satisfaction: Float? = null,

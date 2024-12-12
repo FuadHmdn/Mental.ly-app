@@ -9,6 +9,7 @@ import com.c242ps188.mentally_app.data.remote.response.User
 import com.google.gson.Gson
 import retrofit2.HttpException
 import java.net.SocketTimeoutException
+import java.net.UnknownHostException
 
 class LoginRepository(
     private val apiService: ApiService
@@ -49,24 +50,34 @@ class LoginRepository(
         } catch (e: SocketTimeoutException) {
             _registerMessage.value =  e.message
             _isLoading.value = false
+        }  catch (e: SocketTimeoutException) {
+            _registerMessage.value = "Request timed out. Please try again."
+            _isLoading.value = false
+        } catch (e: UnknownHostException) {
+            _registerMessage.value = "No internet connection. Please check your network and try again."
+            _isLoading.value = false
+        } catch (e: Exception) {
+            _registerMessage.value = "An unexpected error occurred: ${e.message}"
+            _isLoading.value = false
         }
     }
 
     suspend fun login(email: String, password: String) {
-        _isLoading.value = true
         try {
             val result = apiService.login(email, password)
             _loginResult.value = result.user
             _userToken.value = result.accessToken
-            _loginMessage.value = null
-            _isLoading.value = false
+            _loginMessage.value = "200"
         } catch (e: HttpException) {
             val json = e.response()?.errorBody()?.string()
             val result = Gson().fromJson(json, Message::class.java)
             _loginMessage.value = result.msg
         } catch (e: SocketTimeoutException) {
-            _loginMessage.value =  e.message
-            _isLoading.value = false
+            _loginMessage.value = "Request timed out. Please try again."
+        } catch (e: UnknownHostException) {
+            _loginMessage.value = "No internet connection. Please check your network and try again."
+        } catch (e: Exception) {
+            _loginMessage.value = "An unexpected error occurred: ${e.message}"
         }
     }
 
