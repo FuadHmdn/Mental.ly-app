@@ -49,6 +49,11 @@ class DiagnoseRepository(
         _diagnoseStatus.value = null
     }
 
+    fun resetDiagnoseMessage(){
+        _diagnoseMessage.value = null
+        _diagnoseConfidence.value = null
+    }
+
     companion object {
         @Volatile
         private var instance: DiagnoseRepository? = null

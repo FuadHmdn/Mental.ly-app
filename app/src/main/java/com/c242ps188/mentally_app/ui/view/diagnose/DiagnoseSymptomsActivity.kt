@@ -286,6 +286,7 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
         binding.btnFinish.setOnClickListener {
             finish()
             diagnoseViewModel.resetProgress()
+            diagnoseViewModel.resetDiagnoseMessage()
         }
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -300,7 +301,7 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
             ) {
                 parent?.let {
                     val inputAge = it.getItemAtPosition(position).toString()
-                    diagnoseViewModel.age = inputAge.toInt()
+                    diagnoseViewModel.age = ageScaling(inputAge.toInt(), ageOptions.last().toInt(), ageOptions.first().toInt())
                 }
             }
 
@@ -511,6 +512,7 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
                 }
 
             } else if (diagnoseViewModel.diagnoseProgress.value == 10 && !valid) {
+                diagnoseViewModel.decrementProgress()
                 showToast(getString(R.string.please_fill_in_all_the_data))
             }
         }
@@ -538,6 +540,7 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
 
         binding.btnBack.setOnClickListener {
             finish()
+            diagnoseViewModel.resetDiagnoseMessage()
             diagnoseViewModel.resetProgress()
         }
     }
@@ -578,5 +581,9 @@ class DiagnoseSymptomsActivity : AppCompatActivity() {
             binding.skor.visibility = View.VISIBLE
             binding.loading.visibility = View.GONE
         }
+    }
+
+    private fun ageScaling(age: Int, max: Int, min: Int): Float {
+        return (age.toFloat() - min.toFloat()) / (max.toFloat() - min.toFloat())
     }
 }

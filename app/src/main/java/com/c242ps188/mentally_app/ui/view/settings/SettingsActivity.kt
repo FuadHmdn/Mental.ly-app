@@ -10,7 +10,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.C242PS188.mentally_app.R
 import com.C242PS188.mentally_app.databinding.ActivitySettingsBinding
-import com.c242ps188.mentally_app.data.local.preferences.userDataStore
+import com.c242ps188.mentally_app.ui.view.about.AboutActivity
 import com.c242ps188.mentally_app.ui.view.login.LoginActivity
 import com.c242ps188.mentally_app.ui.viewmodel.SettingsViewModel
 import com.c242ps188.mentally_app.ui.viewmodel.UsersViewModel
@@ -63,6 +63,11 @@ class SettingsActivity : AppCompatActivity() {
 
         binding.switchDarkMode.setOnCheckedChangeListener { _, isChecked ->
             updateTheme(isChecked)
+        }
+
+        binding.btnAbout.setOnClickListener {
+            val intent = Intent(this, AboutActivity::class.java)
+            startActivity(intent)
         }
     }
 
