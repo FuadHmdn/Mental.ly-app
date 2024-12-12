@@ -33,7 +33,7 @@
     <color name="md_theme_primaryFixedDim">#FFB3AE</color>
     <color name="md_theme_onPrimaryFixedVariant">#930014</color>
     <color name="md_theme_secondaryFixed">#E2E2E2</color>
-    <color name="md_theme_onSecondaryFixed">#8E8E8E</color>
+    <color name="md_theme_onSecondaryFixed">#787878</color>
     <color name="md_theme_secondaryFixedDim">#C6C6C7</color>
     <color name="md_theme_onSecondaryFixedVariant">#454747</color>
     <color name="md_theme_tertiaryFixed">#FFDCBB</color>
