@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.InputType
+import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
@@ -32,7 +33,7 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            v.setPadding(0, systemBars.top, 0, 0)
             insets
         }
         observe()
@@ -48,6 +49,10 @@ class RegisterActivity : AppCompatActivity() {
                     showToast(it)
                 }
             }
+        }
+
+        loginViewModel.isLoading.observe(this){
+            showLoading(it)
         }
     }
 
@@ -158,5 +163,13 @@ class RegisterActivity : AppCompatActivity() {
             }
 
         builder.create().show()
+    }
+
+    private fun showLoading(loading: Boolean) {
+        if (loading) {
+            binding.loading.visibility = View.VISIBLE
+        } else {
+            binding.loading.visibility = View.GONE
+        }
     }
 }

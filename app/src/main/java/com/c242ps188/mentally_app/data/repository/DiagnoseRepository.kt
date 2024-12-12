@@ -8,6 +8,7 @@ import com.c242ps188.mentally_app.data.remote.response.DiagnoseFailResponse
 import com.google.gson.Gson
 import retrofit2.HttpException
 import java.net.SocketTimeoutException
+import java.net.UnknownHostException
 
 class DiagnoseRepository(
     private val apiService: ApiService
@@ -40,7 +41,13 @@ class DiagnoseRepository(
             _diagnoseStatus.value = result.status
             _isLoading.value = false
         } catch (e: SocketTimeoutException) {
-            _diagnoseMessage.value =  e.message
+            _diagnoseMessage.value = "Request timed out. Please try again."
+            _isLoading.value = false
+        } catch (e: UnknownHostException) {
+            _diagnoseMessage.value = "No internet connection. Please check your network and try again."
+            _isLoading.value = false
+        } catch (e: Exception) {
+            _diagnoseMessage.value = "An unexpected error occurred: ${e.message}"
             _isLoading.value = false
         }
     }

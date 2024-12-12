@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.view.ViewCompat
@@ -54,11 +55,22 @@ class SettingsActivity : AppCompatActivity() {
         }
 
         binding.btnLogout.setOnClickListener {
-            val intent = Intent(this, LoginActivity::class.java).apply {
-                flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            AlertDialog.Builder(this).apply {
+                setTitle("Logout Confirmation")
+                setMessage("Are you sure you want to logout?")
+                setPositiveButton("Yes") { _, _ ->
+                    val intent = Intent(this@SettingsActivity, LoginActivity::class.java).apply {
+                        flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    }
+                    usersViewModel.removeSession()
+                    startActivity(intent)
+                }
+                setNegativeButton("No") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                create()
+                show()
             }
-            usersViewModel.removeSession()
-            startActivity(intent)
         }
 
         binding.switchDarkMode.setOnCheckedChangeListener { _, isChecked ->

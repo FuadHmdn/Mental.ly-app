@@ -36,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
+            v.setPadding(0, systemBars.top, 0, 0)
             insets
         }
         observe()
@@ -72,8 +72,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginViewModel.loginMessage.observe(this) { message ->
-            if (message != "Email atau Password salah") {
-
+            if (message == "200") {
                 val currentToken = token
                 val currentName = name
                 val currentId = id
@@ -87,9 +86,10 @@ class LoginActivity : AppCompatActivity() {
                     flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                 }
                 startActivity(intent)
-
             } else {
-                showToast(message)
+                if (message != null) {
+                    showToast(message)
+                }
             }
         }
     }
