@@ -111,4 +111,8 @@
     <string name="about_mental_ly">About Mental.ly</string>
     <string name="about_mentally">Mental.ly is a leading mental health application designed to provide comprehensive support and resources for individuals facing mental health challenges. With an easy-to-use interface and advanced features, Mental.ly aims to revolutionize the way people manage and improve their mental well-being.</string>
     <string name="diagnosis_result">Diagnosis Result</string>
+    <string name="predict">Predict</string>
+    <string name="how_would_you_describe_your_current_feelings">How would you describe your current feelings?</string>
+    <string name="predict_your_feelings">Predict your Feelings</string>
+    <string name="maximum_input_of_100_words">Maximum input of 100 words</string>
 </resources>

@@ -8,63 +8,560 @@
     android:background="@color/md_theme_primaryContainer"
     tools:context="com.c242ps188.mentally_app.ui.view.diagnose.DiagnoseFeelingActivity">
 
-    <ImageView
-        android:id="@+id/btn_back"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginStart="16dp"
-        android:contentDescription="@string/back"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:src="@drawable/ic_arrow_back_2" />
+    <!--    <ImageView-->
+    <!--        android:id="@+id/btn_back"-->
+    <!--        android:layout_width="30dp"-->
+    <!--        android:layout_height="30dp"-->
+    <!--        android:layout_marginTop="24dp"-->
+    <!--        android:layout_marginStart="16dp"-->
+    <!--        android:contentDescription="@string/back"-->
+    <!--        app:layout_constraintTop_toTopOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        android:src="@drawable/ic_arrow_back_2" />-->
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:text="@string/back"
-        android:fontFamily="@font/poppins_bold"
-        android:layout_marginStart="16dp"
-        android:textColor="@color/md_theme_onPrimary"
-        app:layout_constraintTop_toTopOf="@id/btn_back"
-        app:layout_constraintBottom_toBottomOf="@id/btn_back"
-        app:layout_constraintStart_toEndOf="@id/btn_back" />
+    <!--    <TextView-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:textSize="18sp"-->
+    <!--        android:text="@string/back"-->
+    <!--        android:fontFamily="@font/poppins_bold"-->
+    <!--        android:layout_marginStart="16dp"-->
+    <!--        android:textColor="@color/md_theme_onPrimary"-->
+    <!--        app:layout_constraintTop_toTopOf="@id/btn_back"-->
+    <!--        app:layout_constraintBottom_toBottomOf="@id/btn_back"-->
+    <!--        app:layout_constraintStart_toEndOf="@id/btn_back" />-->
 
-    <TextView
-        android:id="@+id/coming_soon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="320dp"
-        android:fontFamily="@font/poppins_bold"
-        android:text="@string/coming"
-        android:textColor="@color/md_theme_onPrimary"
-        android:textSize="42sp"
+    <!--    <TextView-->
+    <!--        android:id="@+id/coming_soon"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginBottom="320dp"-->
+    <!--        android:fontFamily="@font/poppins_bold"-->
+    <!--        android:text="@string/coming"-->
+    <!--        android:textColor="@color/md_theme_onPrimary"-->
+    <!--        android:textSize="42sp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="@+id/tv_detail_coming_soon"-->
+    <!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/tv_soon"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="@string/soon"-->
+    <!--        android:textSize="42sp"-->
+    <!--        android:layout_marginTop="42dp"-->
+    <!--        android:fontFamily="@font/poppins_bold"-->
+    <!--        android:textColor="@color/md_theme_onPrimary"-->
+    <!--        app:layout_constraintTop_toTopOf="@id/coming_soon"-->
+    <!--        app:layout_constraintStart_toStartOf="@id/coming_soon" />-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/tv_detail_coming_soon"-->
+    <!--        android:layout_width="280dp"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="@string/oops_we_re_making_some_improvements_predict_your_feelings_will_be_back_soon_better_than_ever_thanks_for_your_patience"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        android:textColor="@color/md_theme_background_highContrast"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        android:alpha="0.8"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/tv_soon" />-->
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_rounded_corner"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            android:orientation="horizontal"
+            tools:ignore="UseCompoundDrawables,UselessParent">
+
+            <ImageView
+                android:id="@+id/btn_back"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:contentDescription="@string/back_to_home"
+                android:src="@drawable/ic_arrow_back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginStart="24dp"
+                android:fontFamily="@font/poppins_semibold"
+                android:text="@string/predict_your_feelings"
+                android:textColor="@color/md_theme_primary"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+
+        <!-- Diagnose -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <!-- INPUT TEXT-->
+            <ScrollView
+                android:id="@+id/predict_text"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="visible">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:id="@+id/tv_feelings"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:text="@string/how_would_you_describe_your_current_feelings"
+                        android:textColor="@color/md_theme_primary"
+                        android:textSize="16sp"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <EditText
+                        android:id="@+id/ed_inputText"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="24dp"
+                        android:layout_marginEnd="16dp"
+                        android:autofillHints=""
+                        android:background="@drawable/bg_rounded"
+                        android:gravity="top|start"
+                        android:hint="@string/maximum_input_of_100_words"
+                        android:inputType="textMultiLine"
+                        android:padding="16dp"
+                        android:textSize="16sp"
+                        app:layout_constraintTop_toBottomOf="@id/tv_feelings"
+                        tools:ignore="LabelFor" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </ScrollView>
+
+            <!-- RESULT SKOR -->
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="32dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:visibility="gone">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/skor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_skor"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="@font/poppins_semibold"
+                        android:gravity="center"
+                        android:text="@string/diagnosis_result"
+                        android:textColor="@color/md_theme_primary"
+                        android:textSize="20sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <!-- RESULT 1 -->
+                    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                        android:id="@+id/circularProgressBar"
+                        android:layout_width="240dp"
+                        android:layout_height="240dp"
+                        android:layout_marginTop="32dp"
+                        app:cpb_background_progressbar_color="#E0E0E0"
+                        app:cpb_background_progressbar_width="20dp"
+                        app:cpb_progressbar_color="@color/md_theme_primary"
+                        app:cpb_progressbar_width="20dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tv_skor"
+                        tools:cpb_progress="70" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginEnd="24dp"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="@id/circularProgressBar"
+                        app:layout_constraintEnd_toEndOf="@id/circularProgressBar"
+                        app:layout_constraintStart_toStartOf="@id/circularProgressBar"
+                        app:layout_constraintTop_toTopOf="@id/circularProgressBar">
+
+                        <TextView
+                            android:id="@+id/tv_skor_result"
+                            android:layout_width="wrap_content"
+                            android:layout_height="55dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:textColor="@color/md_theme_primary"
+                            android:textSize="42sp"
+                            tools:text="70" />
+
+                        <TextView
+                            android:id="@+id/tv_skor_desc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="18dp"
+                            android:layout_marginEnd="18dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:gravity="center"
+                            android:maxLines="2"
+                            android:text="@string/normal"
+                            android:textColor="@color/md_theme_primary"
+                            android:textSize="25sp" />
+
+                    </LinearLayout>
+
+                    <!-- RESULT 2 ,3, 4-->
+                    <LinearLayout
+                        android:id="@+id/result234"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginEnd="16dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/circularProgressBar">
+
+                        <!--                        RESULT 2 -->
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                                android:id="@+id/circularProgressBar2"
+                                android:layout_width="110dp"
+                                android:layout_height="110dp"
+                                app:cpb_background_progressbar_color="#E0E0E0"
+                                app:cpb_background_progressbar_width="10dp"
+                                app:cpb_progressbar_color="@color/md_theme_primary"
+                                app:cpb_progressbar_width="10dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:cpb_progress="70" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                app:layout_constraintBottom_toBottomOf="@id/circularProgressBar2"
+                                app:layout_constraintEnd_toEndOf="@id/circularProgressBar2"
+                                app:layout_constraintStart_toStartOf="@id/circularProgressBar2"
+                                app:layout_constraintTop_toTopOf="@id/circularProgressBar2">
+
+                                <TextView
+                                    android:id="@+id/tv_skor_result2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/poppins_bold"
+                                    android:textColor="@color/md_theme_primary"
+                                    android:textSize="18sp"
+                                    tools:text="70" />
+
+                                <TextView
+                                    android:id="@+id/tv_skor_desc2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/poppins_semibold"
+                                    android:gravity="center"
+                                    android:maxLines="2"
+                                    android:text="Depression"
+                                    android:textColor="@color/md_theme_primary"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <!--                        RESULT 3 -->
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                                android:id="@+id/circularProgressBar3"
+                                android:layout_width="110dp"
+                                android:layout_height="110dp"
+                                app:cpb_background_progressbar_color="#E0E0E0"
+                                app:cpb_background_progressbar_width="10dp"
+                                app:cpb_progressbar_color="@color/md_theme_primary"
+                                app:cpb_progressbar_width="10dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:cpb_progress="70" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                app:layout_constraintBottom_toBottomOf="@id/circularProgressBar3"
+                                app:layout_constraintEnd_toEndOf="@id/circularProgressBar3"
+                                app:layout_constraintStart_toStartOf="@id/circularProgressBar3"
+                                app:layout_constraintTop_toTopOf="@id/circularProgressBar3">
+
+                                <TextView
+                                    android:id="@+id/tv_skor_result3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/poppins_bold"
+                                    android:textColor="@color/md_theme_primary"
+                                    android:textSize="18sp"
+                                    tools:text="70" />
+
+                                <TextView
+                                    android:id="@+id/tv_skor_desc3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/poppins_semibold"
+                                    android:gravity="center"
+                                    android:maxLines="2"
+                                    android:text="Personality Disorder"
+                                    android:textColor="@color/md_theme_primary"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <!--                        RESULT 4 -->
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+
+                            <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                                android:id="@+id/circularProgressBar4"
+                                android:layout_width="110dp"
+                                android:layout_height="110dp"
+                                app:cpb_background_progressbar_color="#E0E0E0"
+                                app:cpb_background_progressbar_width="10dp"
+                                app:cpb_progressbar_color="@color/md_theme_primary"
+                                app:cpb_progressbar_width="10dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:cpb_progress="70" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                app:layout_constraintBottom_toBottomOf="@id/circularProgressBar4"
+                                app:layout_constraintEnd_toEndOf="@id/circularProgressBar4"
+                                app:layout_constraintStart_toStartOf="@id/circularProgressBar4"
+                                app:layout_constraintTop_toTopOf="@id/circularProgressBar4">
+
+                                <TextView
+                                    android:id="@+id/tv_skor_result4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/poppins_bold"
+                                    android:textColor="@color/md_theme_primary"
+                                    android:textSize="18sp"
+                                    tools:text="70" />
+
+                                <TextView
+                                    android:id="@+id/tv_skor_desc4"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/poppins_semibold"
+                                    android:gravity="center"
+                                    android:maxLines="2"
+                                    android:text="Bipolar"
+                                    android:textColor="@color/md_theme_primary"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </LinearLayout>
+
+                    <!-- RESULT 5, 6-->
+                    <LinearLayout
+                        android:id="@+id/result56"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/result234">
+
+                        <!-- RESULT 5 -->
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp">
+
+                            <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                                android:id="@+id/circularProgressBar5"
+                                android:layout_width="110dp"
+                                android:layout_height="110dp"
+                                app:cpb_background_progressbar_color="#E0E0E0"
+                                app:cpb_background_progressbar_width="10dp"
+                                app:cpb_progressbar_color="@color/md_theme_primary"
+                                app:cpb_progressbar_width="10dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:cpb_progress="70" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                app:layout_constraintBottom_toBottomOf="@id/circularProgressBar5"
+                                app:layout_constraintEnd_toEndOf="@id/circularProgressBar5"
+                                app:layout_constraintStart_toStartOf="@id/circularProgressBar5"
+                                app:layout_constraintTop_toTopOf="@id/circularProgressBar5">
+
+                                <TextView
+                                    android:id="@+id/tv_skor_result5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/poppins_bold"
+                                    android:textColor="@color/md_theme_primary"
+                                    android:textSize="18sp"
+                                    tools:text="70" />
+
+                                <TextView
+                                    android:id="@+id/tv_skor_desc5"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/poppins_semibold"
+                                    android:gravity="center"
+                                    android:maxLines="2"
+                                    android:text="Depression"
+                                    android:textColor="@color/md_theme_primary"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <!-- RESULT 6 -->
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp">
+
+                            <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                                android:id="@+id/circularProgressBar6"
+                                android:layout_width="110dp"
+                                android:layout_height="110dp"
+                                app:cpb_background_progressbar_color="#E0E0E0"
+                                app:cpb_background_progressbar_width="10dp"
+                                app:cpb_progressbar_color="@color/md_theme_primary"
+                                app:cpb_progressbar_width="10dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:cpb_progress="70" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:orientation="vertical"
+                                app:layout_constraintBottom_toBottomOf="@id/circularProgressBar6"
+                                app:layout_constraintEnd_toEndOf="@id/circularProgressBar6"
+                                app:layout_constraintStart_toStartOf="@id/circularProgressBar6"
+                                app:layout_constraintTop_toTopOf="@id/circularProgressBar6">
+
+                                <TextView
+                                    android:id="@+id/tv_skor_result6"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="@font/poppins_bold"
+                                    android:textColor="@color/md_theme_primary"
+                                    android:textSize="18sp"
+                                    tools:text="70" />
+
+                                <TextView
+                                    android:id="@+id/tv_skor_desc6"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:fontFamily="@font/poppins_semibold"
+                                    android:gravity="center"
+                                    android:maxLines="2"
+                                    android:text="Personality Disorder"
+                                    android:textColor="@color/md_theme_primary"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        app:layout_constraintTop_toBottomOf="@id/result56" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </ScrollView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_predict"
+        android:layout_width="230dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="64dp"
+        android:layout_weight="1"
+        tools:visibility="gone"
+        android:text="@string/predict"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/tv_detail_coming_soon"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_soon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/soon"
-        android:textSize="42sp"
-        android:layout_marginTop="42dp"
-        android:fontFamily="@font/poppins_bold"
-        android:textColor="@color/md_theme_onPrimary"
-        app:layout_constraintTop_toTopOf="@id/coming_soon"
-        app:layout_constraintStart_toStartOf="@id/coming_soon" />
-
-    <TextView
-        android:id="@+id/tv_detail_coming_soon"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:text="@string/oops_we_re_making_some_improvements_predict_your_feelings_will_be_back_soon_better_than_ever_thanks_for_your_patience"
         app:layout_constraintEnd_toEndOf="parent"
-        android:textColor="@color/md_theme_background_highContrast"
-        app:layout_constraintStart_toStartOf="parent"
-        android:alpha="0.8"
-        app:layout_constraintTop_toBottomOf="@id/tv_soon" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btn_finish"
+        android:layout_width="230dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="64dp"
+        android:layout_weight="1"
+        android:text="@string/finish"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

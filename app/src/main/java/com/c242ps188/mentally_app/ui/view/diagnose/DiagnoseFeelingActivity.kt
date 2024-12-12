@@ -5,6 +5,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.widget.addTextChangedListener
 import com.C242PS188.mentally_app.R
 import com.C242PS188.mentally_app.databinding.ActivityDiagnoseFeelingBinding
 
@@ -29,6 +30,22 @@ class DiagnoseFeelingActivity : AppCompatActivity() {
     private fun setListener() {
         binding.btnBack.setOnClickListener {
             finish()
+        }
+
+        binding.edInputText.addTextChangedListener { editable ->
+            editable?.let {
+                val text = it.toString()
+                val words = text.trim().split("\\s+".toRegex())
+                if (words.size > 100) {
+                    val limitedText = words.take(100).joinToString(" ")
+                    binding.edInputText.setText(limitedText)
+                    binding.edInputText.setSelection(limitedText.length)
+                }
+            }
+        }
+
+        binding.btnPredict.setOnClickListener {
+
         }
     }
 }
